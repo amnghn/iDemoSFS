@@ -155,3 +155,86 @@ Every entry has an ISO 8601 timestamp in Vienna time (`TZ=Europe/Vienna date -Im
   - the slowest cases 204–290 ms at full accuracy and 41–185 ms in draft mode;
   - faster than moments for 38 of 39 models; the exception is 2D selection with migration at 40 × 40 (288 against 248 ms).
 - Local commit at STOP 2. Nothing was pushed.
+
+### 2026-11-18T23:00+01:00 | STOP 2 answered: validation approved, start of Phase 2
+
+#### Added
+- `docs/PROMPT.md`: the STOP 2 answers under "Follow-up instructions" (the original text is unchanged; checked with `cmp`).
+
+#### Changed
+- Decisions recorded:
+  - selection limits: |γ| ≤ 20 in two-population mode (warning above 10) and |γ| ≤ 50 in one-population mode (warning for γ > 30 when h > 0.5);
+  - the Phase 1 internal sample sizes for selection and migration stay the defaults;
+  - the reference screenshots stay out of the repository.
+
+### 2026-11-18T23:47+01:00 | Phase 2, steps 2.0–2.3: the app (Model, Statistics, Learn, About) and calculator checks
+
+#### Added
+- **Front end** (`app/index.html`, `app/src/main.ts`, `app/src/ui/`): plain TypeScript with D3 7.9.2; Vite static build with relative paths (`base: "./"`) for GitHub Pages. Four tabs: Model, Statistics, Learn, About. A header with a permanent **Beta** badge, and a footer with the version and a one-line disclaimer.
+- **Model tab:**
+  - controls after GADMA's "structure" idea: mode, presets, structure (1–3 epochs before and after the split), feature switches (migration, symmetric migration, migration masks, admixture pulse, selection, dominance, inbreeding, ancestral misidentification, and the three dynamics types);
+  - log sliders paired with number inputs; sample size and display options; physical units and θ;
+  - a tube diagram of the history (log or linear width, compressed or linear time axis, migration and pulse arrows, tooltips; a click on a tube opens its controls);
+  - the 1D SFS (neutral overlay, ratio to neutral, pinned "ghost"), and the joint SFS heatmap with its marginal spectra;
+  - compact statistics and a rule-based "What changed?" text with citations;
+  - exports: CSV, dadi/moments `.fs`, Demes YAML, SVG and PNG;
+  - the model is kept in the URL (`?v=1&s=…`), and `?preset=<id>` opens a preset.
+- **Engine in a Web Worker** (`app/src/engine/worker.ts`, `client.ts`): only the newest request runs; draft accuracy (`dt_fac` 0.1) while a slider moves, full accuracy (0.02) when it is released; a cache; a spinner after 200 ms while the old plot stays.
+- **Presets** (`app/src/ui/presets.ts`): 28 one-click models. Each is one of the validation models in `validation/models/*.json`.
+- **Statistics tab** (`app/src/ui/statsView.ts`):
+  - model mode and calculator mode (upload or paste; dadi/moments `.fs`, easySFS, ANGSD realSFS with first line or mean, plain matrix; L from the monomorphic bins or typed);
+  - the full statistics table, with statistics that need an unfolded spectrum greyed out;
+  - Weir & Cockerham options: HWE, F_IS, H_obs, exact from a VCF (at most 50 MB, read in the worker; also .vcf.gz) or a genotype table or two `vcftools --hardy` files, and haploid;
+  - the model–data panel (optimal scaling, Poisson and Anscombe residuals, multinomial log-likelihood, observed and expected statistics);
+  - estimator weights in 1D and weight heatmaps in 2D;
+  - Hudson and WC F_ST teaching plots (sample size ratio, MAF filter, assumed F_IS);
+  - a parameter sweep (separate worker, one chart per statistic, optional no-migration comparison);
+  - 12 statistic cards and the box "What the SFS cannot give".
+- **New statistics code:** `app/src/stats/parsers.ts`, `residuals.ts` (ported from moments.Inference), `vcf.ts`, `sfsutil.ts`, and a haploid WC option in `twopop.ts`.
+- **Teaching text** (`app/src/content/learn.md`, `stats.md`, `about.md`; CC BY 4.0):
+  - 12 Learn sections, with buttons that open presets, a schematic of two genealogies, 8 guided exercises and a glossary;
+  - a live "limits of the SFS" example. Exponential growth 1 → 10 over T = 0.1 and a sudden expansion to 5.1 at T = 0.075 differ by at most 0.21 % in any bin at n = 20; the pair was found by a grid search with the engine.
+- **Content pipeline** (`app/scripts/build_content.ts`, `app/scripts/content/bib.ts`):
+  - Markdown and KaTeX are rendered at build time;
+  - `[@key]` citations are resolved against `docs/REFERENCES.bib` (56 references cited), and an unknown key stops the build;
+  - the version and the date of the last change come from `package.json` and this file.
+- **About page:** author, contact (`[EMAIL_PLACEHOLDER]`; the address will be built at run time), feedback, citation, licences, disclaimer, AI declaration, validation summary, version, privacy note, related tools and the full reference list. The repository URL is a placeholder until STOP 3 (`app/src/site_config.ts`).
+- **Related tools:** `docs/related_tools.tsv`, taken from Amin's survey of existing tools, and `tools/check_related_tools.py`. All 11 URLs returned HTTP 200 (`docs/related_tools_check.tsv`), and only checked links are shown.
+- **Validation of the calculator:**
+  - `validation/export_calculator_fixtures.py` with `validation/slurm/export_calculator_fixtures.sbatch` (SLURM job 8086692) writes `app/test/fixtures/calculator_fixtures.json`;
+  - the parsers equal moments' `Spectrum.from_file` and `from_angsd`, and the residuals and log-likelihood equal moments.Inference, to 1e-10 or better;
+  - haploid WC from the joint SFS equals egglib `FstWC` and an independent analysis of variance to 1e-12 (scikit-allel supports diploid data only);
+  - the VCF path (with 5 % missing genotypes) equals scikit-allel to 1e-12.
+- **Tests:** `app/test/calculator.test.ts`, `ui.test.ts` and `dom.test.ts` (happy-dom). Vitest: 97 of 97 pass.
+- `app/scripts/browser_check.mjs`: a headless Firefox check (WebDriver BiDi, no extra packages). It loads every tab, records console errors and takes screenshots. No errors were found at 1440, 1100 and 400 px, in light and dark mode, and no layout is wider than the window.
+
+#### Changed
+- **Selection limits** (STOP 2 decision) in `app/src/engine/limits.ts`, shared by the sliders and `validateModel`: |γ| ≤ 20 in two populations (warning above 10) and ≤ 50 in one (warning for γ > 30 with h > 0.5). Also n ≤ 40 per population in 2D and ≤ 100 in 1D, and ν in [0.01, 100]. All 39 validation models are within these limits.
+- `app/package.json`: new dependencies d3 7.9.2, katex 0.19.1 and markdown-it 14.3.3, and dev dependencies @types/d3 7.4.3, @types/markdown-it 14.2.0 and happy-dom 21.0.4 (exact versions, all at least two weeks old). New scripts: `content` (run before `dev`, `build`, `typecheck` and `test`).
+- Colours: the Okabe–Ito categories, plus dark-theme steps validated with the dataviz palette checker (blue #2F86C4, orange #BA8000).
+
+#### Fixed
+- `modelFromOverrides` returned arrays of its input, so editing a model after a preset changed the preset itself. It now copies its input. The Vitest suite found this.
+
+### 2026-11-18T23:54+01:00 | Phase 2, steps 2.4–2.7 and ⏸ STOP 3: publication files, browser checks, speed in the browser
+
+#### Added
+- `.github/workflows/deploy-pages.yml`: install (`npm ci`), test, build and deploy `app/dist` to GitHub Pages on a push to `main`. It uses actions/checkout v7, setup-node v7 (Node 22), configure-pages v6, upload-pages-artifact v5 and deploy-pages v5 (the current major versions, checked on GitHub). It is prepared, not run.
+- `README.md`: features, local preview, tests, deployment, validation, known limitations, how to cite, licences, AI declaration and repository layout.
+- `LICENSE` (MIT, code), `LICENSE-CONTENT.md` (CC BY 4.0, teaching text and documentation) and `CITATION.cff` (version 0.1.0-beta; the repository URL is a placeholder).
+- `app/bench.html` and `app/src/bench.ts`: time the engine in the visitor's browser. Results for Firefox 153 on the LiSC login node (AMD EPYC 7763) are in `validation/benchmarks/browser_timing_firefox.tsv`:
+  - one-population models take 0.07–0.5 ms, and a split without migration 1.8 ms;
+  - isolation with migration and a pulse take 10–13 ms;
+  - migration with continuous size change and structure (3, 2) take 130–139 ms;
+  - selection with migration (40 × 40) takes 145 ms (99 ms in draft mode).
+- `app/scripts/browser_check.mjs`: new `--calc` option (pastes a spectrum into the calculator) and `--sweep` option (runs the parameter sweep). Both ran with no console errors; the sweep took 12 points in 325 ms.
+- `docs/VALIDATION.md`, Section 11: the calculator checks (formats, residuals, haploid and VCF WC), the app checks and the speed in the browser. `docs/DESIGN.md`: Section 7.8 "Updated in Phase 2", and the haploid WC estimator is resolved (no open [CHECK] remains).
+
+#### Changed
+- Line charts use step-aware tick labels, and the sweep charts have no duplicate axis title.
+- The "What changed?" text now explains rare variants that come from gene flow, and always mentions ancestral misidentification when it is on.
+
+#### Notes
+- Vitest: 97 of 97 pass. Typecheck and build pass (main bundle 524 kB, 113 kB gzipped, plus a 34 kB chunk shared with bench.html, and the KaTeX fonts).
+- Placeholders to fill after STOP 3: the contact email (`app/src/site_config.ts`, README) and the repository URL (`site_config.ts`, README, CITATION.cff).
+- Local commit at STOP 3. Nothing was pushed.

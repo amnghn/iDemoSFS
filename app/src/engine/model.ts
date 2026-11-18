@@ -12,6 +12,7 @@
  */
 
 import { NuSpec } from "./integrate.ts";
+import { LIMITS, limitErrors } from "./limits.ts";
 
 export type Dynamics = "sudden" | "linear" | "exponential";
 
@@ -59,10 +60,13 @@ export function defaultModel(): Model {
   };
 }
 
-/** Deep-merge partial overrides (for example a JSON model file) into the default model. */
+/**
+ * Deep-merge partial overrides (for example a JSON model file) into the default model. The
+ * result shares no objects with its inputs (the overrides may be an imported JSON module).
+ */
 export function modelFromOverrides(over: unknown, base: Model = defaultModel()): Model {
   const merge = (b: unknown, o: unknown): unknown => {
-    if (o === null || typeof o !== "object" || Array.isArray(o)) return o === undefined ? b : o;
+    if (o === null || typeof o !== "object" || Array.isArray(o)) return structuredClone(o === undefined ? b : o);
     const out: Record<string, unknown> = { ...(b as Record<string, unknown>) };
     for (const [k, v] of Object.entries(o as Record<string, unknown>)) {
       const bv = (b as Record<string, unknown> | undefined)?.[k];
@@ -70,7 +74,7 @@ export function modelFromOverrides(over: unknown, base: Model = defaultModel()):
     }
     return out;
   };
-  return merge(base, over) as Model;
+  return structuredClone(merge(base, over)) as Model;
 }
 
 // ---------------------------------------------------------------- compiled plan
@@ -173,9 +177,10 @@ export function validateModel(m: Model): string[] {
       if (!(m.pulse.f >= 0 && m.pulse.f <= 1)) errs.push("the pulse proportion must be in [0, 1]");
     }
   }
-  const nMax = m.mode === 1 ? 200 : 60;
+  const nMax = m.mode === 1 ? LIMITS.n1D.max : LIMITS.n2D.max;
   for (const n of m.mode === 1 ? [m.n[0]] : m.n)
     if (!Number.isInteger(n) || n < 2 || n > nMax) errs.push(`sample size must be an integer in [2, ${nMax}]`);
+  errs.push(...limitErrors(m));
   if (m.inbreeding.on) {
     for (const F of m.mode === 1 ? [m.inbreeding.F[0]] : m.inbreeding.F)
       if (!(F >= 0 && F <= 1)) errs.push("inbreeding coefficient F must be in [0, 1]");

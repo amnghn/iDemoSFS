@@ -468,3 +468,12 @@ DOIs marked † were checked when this prompt was written. Verify all others bef
    }
    ```
 5. **Go for Phase 1.**
+
+### 2026-11-18 (answers at STOP 2)
+
+1. **All proposals at STOP 2 are accepted:**
+   - Selection limits: |γ| ≤ 20 in two-population mode, with a warning above 10; |γ| ≤ 50 in one-population mode, with a warning for γ > 30 when h > 0.5.
+   - The internal sample sizes found in Phase 1 are kept: with selection, n = max(n, 100) in one population and max(n, 40) per population in two; with migration, max(n, 20) per population.
+   - The WC F_IS caveat is shown in the app.
+2. **Reference screenshots** stay out of the public repository (`docs/reference_screenshot/` is gitignored).
+3. **Go for Phase 2.**

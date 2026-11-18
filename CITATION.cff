@@ -1,0 +1,37 @@
+# Citation metadata (https://citation-file-format.github.io/). The repository URL is a
+# placeholder until the repository exists (it is set before publication).
+cff-version: 1.2.0
+message: "If you use this tool, please cite it as below, and cite the methods it builds on (in particular moments)."
+title: "Demographic history and the expected SFS: an interactive teaching tool"
+version: 0.1.0-beta
+type: software
+authors:
+  - family-names: Ghane
+    given-names: Amin
+    affiliation: "Department of Botany and Biodiversity Research, University of Vienna"
+license: MIT
+repository-code: "https://github.com/REPO_OWNER/REPO_NAME"
+keywords:
+  - population genetics
+  - site frequency spectrum
+  - demographic inference
+  - coalescent
+  - teaching
+references:
+  - type: article
+    title: "Inferring the joint demographic history of multiple populations: beyond the diffusion approximation"
+    authors:
+      - family-names: Jouganous
+        given-names: Julien
+      - family-names: Long
+        given-names: Will
+      - family-names: Ragsdale
+        given-names: Aaron P.
+      - family-names: Gravel
+        given-names: Simon
+    journal: Genetics
+    volume: 206
+    start: 1549
+    end: 1567
+    year: 2017
+    doi: 10.1534/genetics.117.200493

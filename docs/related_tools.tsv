@@ -1,0 +1,12 @@
+name	url	what
+Two-epoch demographic history modelling with dadi	https://huggingface.co/spaces/RyanGutenkunst/dadi_two_epoch	a server-based app that links a two-epoch model, its expected 1D SFS and a demesdraw drawing
+PopGeneJS	https://popgenejs.bioinformat.org/	browser-based population genetics teaching modules (drift, selection, migration, F-statistics and more)
+Blackmon Lab population genetics simulator	https://coleoguy.github.io/subpages/popgen-sim.html	a browser-based Wright–Fisher simulator with selection, dominance, migration and shareable links
+learnPopGen	http://www.phytools.org/PopGen/	R package and Shiny apps for drift, selection, migration and coalescent genealogies
+PopG	https://felsenst.github.io/popg/popg.html	a classic program that simulates allele frequencies under drift, selection, mutation and migration
+demesdraw	https://github.com/grahamgower/demesdraw	Python library that draws Demes models as tubes or size histories
+Demes tutorial	https://popsim-consortium.github.io/demes-spec-docs/main/tutorial.html	examples of demographic models, each shown as a drawing and as YAML
+POPdemog	https://github.com/YingZhou001/POPdemog	R package that draws demographic models from simulator commands
+stdpopsim catalogue	https://popsim-consortium.github.io/stdpopsim-docs/stable/catalog.html	published demographic models for many species, with parameters and drawings
+tskit tutorials	https://tskit.dev/tutorials/	tutorials on simulation and analysis of tree sequences, including demography
+Population genetics notes (Graham Coop)	https://github.com/cooplab/popgen-notes	open lecture notes on population genetics, with code for the figures

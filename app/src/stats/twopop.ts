@@ -18,7 +18,8 @@ export interface Joint {
 export type HetMode =
   | { kind: "hwe" } // h = 2p(1-p) * 2k/(2k-1): expected heterozygosity given the allele count (decision of 2026-11-18)
   | { kind: "hwe-plain" } // h = 2p(1-p) (the prompt's form; small bias, shown for comparison)
-  | { kind: "fis"; F: [number, number] }; // h = (1 - F_IS) * 2p(1-p) * 2k/(2k-1)
+  | { kind: "fis"; F: [number, number] } // h = (1 - F_IS) * 2p(1-p) * 2k/(2k-1)
+  | { kind: "haploid" }; // haploid or pooled data: k = n gene copies and no heterozygosity term (c = 0)
 
 export function matrix(n1: number, n2: number, f: (i: number, j: number) => number): Float64Array {
   const w = new Float64Array((n1 + 1) * (n2 + 1));
@@ -72,6 +73,7 @@ export function wcComponents(p1: number, p2: number, k1: number, k2: number, h1:
 }
 
 function hetFor(p: number, k: number, mode: HetMode, pop: 0 | 1): number {
+  if (mode.kind === "haploid") return 0;
   const base = 2 * p * (1 - p);
   if (mode.kind === "hwe-plain") return base;
   const corr = base * ((2 * k) / (2 * k - 1));
@@ -79,11 +81,17 @@ function hetFor(p: number, k: number, mode: HetMode, pop: 0 | 1): number {
   return (1 - mode.F[pop]) * corr;
 }
 
-/** WC weight matrices (a, b, c) for a sample of n1/2 and n2/2 diploid individuals. */
+/**
+ * WC weight matrices (a, b, c) for a sample of n1/2 and n2/2 diploid individuals. In haploid
+ * mode the "individuals" are the n1 and n2 gene copies and c = 0; theta = a / (a + b) is then the
+ * one-level analysis-of-variance estimator (MSP - MSG) / (MSP + (n_c - 1) MSG) (algebra in
+ * docs/VALIDATION.md, Section 5).
+ */
 export function wcWeights(n1: number, n2: number, mode: HetMode) {
-  if (n1 % 2 || n2 % 2) throw new Error("Weir & Cockerham needs even (diploid) sample sizes");
-  const k1 = n1 / 2;
-  const k2 = n2 / 2;
+  const haploid = mode.kind === "haploid";
+  if (!haploid && (n1 % 2 || n2 % 2)) throw new Error("Weir & Cockerham needs even (diploid) sample sizes");
+  const k1 = haploid ? n1 : n1 / 2;
+  const k2 = haploid ? n2 : n2 / 2;
   const A = new Float64Array((n1 + 1) * (n2 + 1));
   const B = new Float64Array(A.length);
   const C = new Float64Array(A.length);
@@ -132,14 +140,16 @@ export function twoPopStats(x: Joint, hetMode: HetMode = { kind: "hwe" }): TwoPo
   let fstWC = NaN;
   let fisWC = NaN;
   let fitWC = NaN;
-  if (n1 % 2 === 0 && n2 % 2 === 0) {
+  if (hetMode.kind === "haploid" || (n1 % 2 === 0 && n2 % 2 === 0)) {
     const { A, B, C } = wcWeights(n1, n2, hetMode);
     const sa = wsum(A, data);
     const sb = wsum(B, data);
     const sc = wsum(C, data);
     fstWC = sa / (sa + sb + sc);
-    fisWC = 1 - sc / (sb + sc);
-    fitWC = 1 - sc / (sa + sb + sc);
+    if (hetMode.kind !== "haploid") {
+      fisWC = 1 - sc / (sb + sc);
+      fitWC = 1 - sc / (sa + sb + sc);
+    }
   }
   return {
     n1,

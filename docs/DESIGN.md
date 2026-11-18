@@ -273,7 +273,7 @@ The sums are always taken over sites before dividing (ratio of averages) [@bhati
 1. **HWE on (default).** Proposed: hᵢ = 2pᵢ(1 − pᵢ)·2kᵢ/(2kᵢ − 1). See the flagged point below.
 2. **HWE off, F_IS given.** hᵢ = (1 − F_IS,ᵢ) times the value above. In model mode F comes from the inbreeding toggle. In calculator mode the user types F_IS or H_obs, with F_IS = 1 − H_obs/H_exp. This assumes the same F_IS at every site, so it is an approximation; Phase 1 reports its error.
 3. **HWE off, exact (calculator mode only).** The user supplies per-site genotype counts (hom-ref, het, hom-alt per population), for example from `bcftools +fill-tags` [@danecek2021twelve] or `vcftools --hardy` [@danecek2011variant], or a VCF of at most 50 MB parsed in a Web Worker. This option no longer uses the SFS alone, and the app says so.
-4. **Haploid or pooled data.** WC without the h̄ term. The exact estimator still has to be confirmed from Weir & Hill [@weir2002estimating]: **[CHECK]** in Phase 2.
+4. **Haploid or pooled data.** WC without the h̄ term: c = 0, and the sample sizes are the numbers of gene copies. *Resolved in Phase 2:* this equals the one-level analysis of variance (MSP − MSG)/(MSP + (n_c − 1)·MSG). It was checked against egglib's `FstWC` ("Weir and Cockerham for haploid data") to 1e-12 (VALIDATION.md, Section 11.3). Weir & Hill [@weir2002estimating] is cited only as a general review.
 
 **⚑ Flagged point (needs your decision).**
 - The prompt gives h̄ = 2p(1 − p) under HWE.
@@ -382,6 +382,16 @@ The text explains both. Hudson's F_ST uses allele frequencies only, so the HWE t
 - The version and the date of the last change are read at build time from `package.json` and `CHANGELOG.md`.
 
 ---
+
+### 7.8 Updated in Phase 2 (2026-11-18)
+- **Built as designed:** plain TypeScript, D3 7.9.2, KaTeX and markdown-it at build time, a Web Worker, and a URL state `?v=1&s=…`.
+- **Additions:**
+  - `?preset=<id>` opens a preset (for teaching links);
+  - `bench.html` times the engine in the visitor's browser;
+  - a headless Firefox check of the built site (`app/scripts/browser_check.mjs`);
+  - a "Related tools" list on the About page (links checked by `tools/check_related_tools.py`).
+- **Selection limits** of STOP 2: |γ| ≤ 20 in two populations (warning above 10) and ≤ 50 in one (warning for γ > 30 with h > 0.5). They are set in `app/src/engine/limits.ts`, shared by the sliders and the model check.
+- **Weir & Cockerham in calculator mode:** the five options are HWE, F_IS, H_obs (converted with F_IS = 1 − H_obs/H_exp), exact and haploid. The exact option takes a VCF (at most 50 MB, .vcf or .vcf.gz, read in the worker) with a population map, a 6-column genotype table, or two `vcftools --hardy` files.
 
 ## 8. Validation plan (Phase 1)
 
