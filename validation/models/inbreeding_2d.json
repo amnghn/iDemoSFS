@@ -1,0 +1,34 @@
+{
+ "mode": 2,
+ "ancestral": [
+  {
+   "nu": 1,
+   "T": 0.1,
+   "dyn": "sudden"
+  }
+ ],
+ "post": [
+  {
+   "T": 0.2,
+   "nu": [
+    1,
+    1
+   ],
+   "dyn": [
+    "sudden",
+    "sudden"
+   ],
+   "m12": 0.0,
+   "m21": 0.0,
+   "mig12On": true,
+   "mig21On": true
+  }
+ ],
+ "inbreeding": {
+  "on": true,
+  "F": [
+   0.3,
+   0.6
+  ]
+ }
+}

@@ -1,0 +1,5 @@
+model_id	grids	a_ts_vs_dadi_inbred	a_bulk	b_ts_vs_dadi_outbred	b_bulk	c_transform_on_dadi	d_python_vs_ts_transform	dadi_seconds	pass_1pct_bulk
+inbreeding_F05	coarse [40, 50, 60]	7.241e-03	7.241e-03	1.167e-02	1.167e-02	2.852e-03	7.182e-15	2.734e-02	True
+inbreeding_F05	fine [80, 90, 100]	5.623e-03	5.623e-03	7.987e-03	7.987e-03	5.629e-04	7.182e-15	3.901e-02	True
+inbreeding_2d	coarse [40, 50, 60]	2.199e-02	3.602e-03	2.312e-02	6.351e-03	6.732e-03	1.231e-14	8.230e-02	True
+inbreeding_2d	fine [80, 90, 100]	3.986e-02	2.482e-03	4.509e-02	3.705e-03	1.313e-03	1.231e-14	1.636e-01	True

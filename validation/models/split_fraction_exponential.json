@@ -1,0 +1,33 @@
+{
+ "mode": 2,
+ "ancestral": [
+  {
+   "nu": 1,
+   "T": 0.1,
+   "dyn": "sudden"
+  }
+ ],
+ "split": {
+  "useFraction": true,
+  "s": 0.2,
+  "nu1": 1,
+  "nu2": 1
+ },
+ "post": [
+  {
+   "T": 0.2,
+   "nu": [
+    2,
+    1
+   ],
+   "dyn": [
+    "exponential",
+    "exponential"
+   ],
+   "m12": 0.0,
+   "m21": 0.0,
+   "mig12On": true,
+   "mig21On": true
+  }
+ ]
+}

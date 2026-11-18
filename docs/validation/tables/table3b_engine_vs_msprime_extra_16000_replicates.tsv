@@ -1,0 +1,3 @@
+model_id	shape	replicates	n_bins	frac_within_3se	frac_within_3se_all_bins	max_abs_z	chi2_per_bin	max_rel_dev_1pct	median_rel_se_1pct	pass
+exp_sudden_recent	21	16000	19	1	1	2.304	0.8583	0.004206	0.001602	True
+split_recent_nomig	21x21	16000	331	0.997	0.9932	3.466	1.114	0.003997	0.00203	True

@@ -452,3 +452,19 @@ DOIs marked † were checked when this prompt was written. Verify all others bef
 2. **Log files:** keep three files. `CHANGELOG.md` is public (Keep a Changelog style, Vienna ISO 8601 timestamps). `change_log.md` (LiSC-internal detail: job IDs, paths) and `plans_ideas.md` (plans, open questions, "waiting for Amin" list) are kept local and gitignored. Update all three after every step.
 3. **egglib 3.6.1** may be added to the local validation environment (`./envs/sfs-validate`). It is the trusted reference for Fu and Li's D, F, D*, F*, normalised Fay and Wu's H and Zeng's E.
 4. **Git:** run `git init` in the working directory and make one local commit at each stop point. Never push; Amin pushes.
+
+### 2026-11-18 (answers at STOP 1)
+
+1. **All proposals in `docs/DESIGN.md` Section 11 are accepted:** MIT for the code and CC BY 4.0 for the teaching text; h̄ = 2p(1−p)·2k/(2k−1) under HWE; shared post-split epochs (GADMA style); the proposed accuracy and limits (dt_fac 0.02 final / 0.1 draft; n ≤ 40 per population in 2D, n ≤ 100 in 1D; |γ| ≤ 50; ν ∈ [0.01, 100]); plain TypeScript for the UI.
+2. **Validation environment:** keep `./envs/sfs-validate` as it is (no leaner rebuild).
+3. **Reference screenshots** are in `docs/reference_screenshot/`. They are an inspiration for the design, not a strict template.
+4. **Nielsen & Slatkin (2013)** is a real book. Use this citation (given by Amin):
+   ```
+   @book{nielsen2013introduction,
+     title={An introduction to population genetics: theory and applications},
+     author={Nielsen, Rasmus and Slatkin, Montgomery},
+     year={2013},
+     publisher={Sinauer Associates, Sunderland, MA}
+   }
+   ```
+5. **Go for Phase 1.**

@@ -1,0 +1,10 @@
+{
+ "mode": 1,
+ "ancestral": [
+  {
+   "nu": 5,
+   "T": 0.3,
+   "dyn": "linear"
+  }
+ ]
+}

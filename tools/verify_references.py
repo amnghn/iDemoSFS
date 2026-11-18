@@ -455,7 +455,13 @@ def bib_book(key, ref, c, d):
     note = "No DOI; verified through an Open Library ISBN record"
     if ref["type"] == "chapter":
         note += " of the volume and an author-hosted copy of the chapter"
-    lines += [f"  url = {{{url}}},", f"  note = {{{note}}},",
+    if c.get("status") == "verified_by_author":
+        note = ("No DOI; no open record shows this edition; confirmed by the app author "
+                "(" + ref["source"].replace("author_confirmed_", "") + ")")
+        url = ""
+    if url:
+        lines.append(f"  url = {{{url}}},")
+    lines += [f"  note = {{{note}}},",
               f"  keywords = {{{ref['group']}}},", "}"]
     return "\n".join(lines)
 
@@ -491,6 +497,13 @@ def run():
                 if c["status"] in ("verified", "verified_note"):
                     bib.append(bib_article(key, msg, ref))
                 elif c["status"] == "verified_no_doi":
+                    bib.append(bib_book(key, ref, c, d))
+                elif ref["source"].startswith("author_confirmed"):
+                    # No open record confirms this edition, but the app author has
+                    # confirmed it from the book itself (follow-up instruction,
+                    # docs/PROMPT.md). Kept, and labelled as such in the .bib.
+                    c.update(status="verified_by_author",
+                             note="confirmed by the app author: " + ref["source"])
                     bib.append(bib_book(key, ref, c, d))
             elif ref["doi_given"].strip():
                 c, msg = verify_with_doi(ref)

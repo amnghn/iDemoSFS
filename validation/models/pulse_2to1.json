@@ -1,0 +1,33 @@
+{
+ "mode": 2,
+ "ancestral": [
+  {
+   "nu": 1,
+   "T": 0.1,
+   "dyn": "sudden"
+  }
+ ],
+ "post": [
+  {
+   "T": 0.4,
+   "nu": [
+    2,
+    0.5
+   ],
+   "dyn": [
+    "sudden",
+    "sudden"
+   ],
+   "m12": 0.0,
+   "m21": 0.0,
+   "mig12On": true,
+   "mig21On": true
+  }
+ ],
+ "pulse": {
+  "on": true,
+  "time": 0.2,
+  "source": 2,
+  "f": 0.2
+ }
+}

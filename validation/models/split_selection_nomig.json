@@ -1,0 +1,32 @@
+{
+ "mode": 2,
+ "ancestral": [
+  {
+   "nu": 1,
+   "T": 0.1,
+   "dyn": "sudden"
+  }
+ ],
+ "post": [
+  {
+   "T": 0.3,
+   "nu": [
+    1,
+    0.5
+   ],
+   "dyn": [
+    "sudden",
+    "sudden"
+   ],
+   "m12": 0.0,
+   "m21": 0.0,
+   "mig12On": true,
+   "mig21On": true
+  }
+ ],
+ "selection": {
+  "on": true,
+  "gamma": 3,
+  "h": 0.5
+ }
+}

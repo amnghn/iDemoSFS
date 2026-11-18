@@ -34,3 +34,5 @@ private_test_data/
 
 # Original prompt file (the tracked copy is docs/PROMPT.md)
 PROMPT_Interactive_DemoHis_expSFS.md
+validation/output/
+docs/reference_screenshot/

@@ -1,0 +1,14 @@
+{
+ "mode": 1,
+ "ancestral": [
+  {
+   "nu": 5,
+   "T": 0.05,
+   "dyn": "sudden"
+  }
+ ],
+ "misid": {
+  "on": true,
+  "eps": 0.02
+ }
+}

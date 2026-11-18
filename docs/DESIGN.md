@@ -1,6 +1,6 @@
 # Design note: interactive web app "Demographic history and the expected SFS"
 
-*Phase 0 design note for STOP 1. Written 2026-11-18. Status: draft, waiting for approval.*
+*Phase 0 design note for STOP 1. Written 2026-11-18. Status: **approved 2026-11-18** (all proposals accepted; see Section 11).*
 *Prompt: `docs/PROMPT.md`. Change log: `CHANGELOG.md`.*
 
 Citations use the keys in `docs/REFERENCES.bib`, for example [@jouganous2017inferring]. Section 12 gives the full list.
@@ -15,7 +15,7 @@ Citations use the keys in `docs/REFERENCES.bib`, for example [@jouganous2017infe
 - **Measured speed of moments** (n = 20, one core of an older Xeon): 2–8 ms for 1D models, 38–128 ms for most 2D models, 304 ms for isolation with migration (IM) plus exponential growth. A TypeScript port should be of the same order. For live sliders, the app uses a coarse "draft" time step while a slider moves and the full accuracy when it stops (Section 5).
 - **Statistics:** every statistic is a weight vector (1D) or weight matrix (2D) applied to the SFS (Section 6). Both F_ST estimators (Hudson; Weir and Cockerham) are computed from the joint SFS. One point needs your decision: the expected heterozygosity under Hardy–Weinberg proportions, given the allele counts in a sample (Section 6.4).
 - **Front end:** Vite + plain TypeScript with a small state store, D3 modules for all plots and the history diagram, and KaTeX + markdown-it rendered at build time.
-- **References:** 66 of 67 verified (Section 12). Nielsen & Slatkin (2013) was removed because its 2013 imprint could not be confirmed. The moments documentation URL has changed.
+- **References:** 67 of 67 verified (Section 12). Nielsen & Slatkin (2013) was first removed because no open record shows its 2013 imprint; Amin confirmed the edition at STOP 1, so it is restored and labelled as author-confirmed. The moments documentation URL has changed.
 
 ---
 
@@ -71,7 +71,7 @@ Use **option A** for all features, including selection, dominance and inbreeding
 | T | Duration, in units of 2·N_ref generations |
 | θ = 4·N_ref·μ·L | Population-scaled mutation rate (whole dataset); θ per site = 4·N_ref·μ |
 | M_ij = 2·N_ref·m_ij | Scaled migration rate into population i from population j (forward in time). The diagram labels each arrow with its direction |
-| γ = 2·N_ref·s, h | Genotype fitnesses 1, 1 + 2hs, 1 + 2s (the dadi/moments convention; to be confirmed in the source in Phase 1) |
+| γ = 2·N_ref·s, h | Genotype fitnesses 1, 1 + 2hs, 1 + 2s (the dadi/moments convention; confirmed in Phase 1: moments converges to the exact equilibrium of the diffusion with this convention, see VALIDATION.md) |
 | F | Inbreeding coefficient of a population |
 | ε | Rate of ancestral misidentification |
 
@@ -144,6 +144,11 @@ The jackknife closure loses accuracy for strong selection at small n. Proposal:
 - when |γ| > 10, integrate at an internal sample size n_int = max(n, 40) and project down to n.
 
 Phase 1 measures the error against moments at a large n and adjusts these limits.
+
+**Updated in Phase 1 (2026-11-18; details in VALIDATION.md).**
+- **Selection.** Measured against the exact equilibrium of the diffusion, the proposal above was too weak. The engine now integrates selection at n_int = max(n, 100) in one population and max(n, 40) per population in two, and then projects. With this, the error in the main bins is below 0.5 % in 1D for γ from −50 to +30 at any h. In 2D it is about 1 % at |γ| = 10 and 2–3 % at |γ| = 20.
+- **Migration.** The msprime check showed a closure error of 1.4–2.9 % with migration and a sample of 10 chromosomes. With migration on, each population is therefore integrated at max(n, 20) chromosomes.
+- **Open decision for STOP 2:** the γ limit in two populations.
 
 ### 4.9 Independent checks inside the test suite
 - **Neutral 1D with piecewise-constant or exponential size:** the expected SFS from coalescent branch lengths [@polanski2003new; @fu1995statistical; @griffiths1998age], computed in TypeScript as an independent oracle (n ≤ 40, where the formulas are numerically stable).
@@ -457,6 +462,9 @@ Interactive_DemoHis_expSFS/
 ---
 
 ## 11. Decisions needed at STOP 1
+
+**Answered 2026-11-18 (STOP 1):** all proposals accepted (items 1–5: MIT + CC BY 4.0; the corrected h̄; shared post-split epochs; the limits as proposed; plain TypeScript). Item 6: the screenshots are now in `docs/reference_screenshot/`; they are an inspiration, not a strict template. Item 7: Amin confirmed the Sinauer 2013 edition; the reference is restored. Item 8: the environment is kept as it is. The original questions follow.
+
 1. **Licences:** MIT for the code and **CC BY 4.0** for the teaching text. Is this fine?
 2. **WC under HWE:** use h̄ = 2p(1 − p)·2k/(2k − 1) (proposed), or 2p(1 − p) as in the prompt (Section 6.4)?
 3. **Epochs after the split:** shared intervals as in GADMA (proposed), or separate epoch boundaries per population (Section 4.1)?
@@ -478,7 +486,8 @@ Interactive_DemoHis_expSFS/
   - The .bib entries use the Crossref metadata.
 - **Books without a DOI:** an Open Library record with a valid ISBN (checksum), and matching title, author, publisher and year.
 - **The chapter without a DOI (Hudson 1990):** the Open Library record of the volume (Oxford Surveys in Evolutionary Biology, volume 7, subtitled "1990"), plus an author-hosted copy of the chapter (HTTP 200).
-- **Result:** 66 of 67 entries verified (5 runs; logs in `validation/logs/`, which is gitignored).
+- **Result:** 66 of 67 entries verified by records at STOP 1 (logs in `validation/logs/`, which is gitignored). After STOP 1, the remaining book (Nielsen & Slatkin 2013) was confirmed by the app author: 67 of 67 (run 7, 2026-11-18).
+- **Author-confirmed books:** an entry with `source = author_confirmed_<date>` in `references_input.tsv` is kept even when no open record shows the edition. Its .bib note says so, and the app labels it.
 
 ### 12.2 Notes
 - **Wahlund (1928):** Crossref lists only the date when the journal archive went online (2010). Title, author, journal, volume (11) and first page (65) match the 1928 print, and the DOI resolves. Accepted with this note.
@@ -486,11 +495,12 @@ Interactive_DemoHis_expSFS/
 - **moments documentation:** the URL in the prompt (`https://moments.readthedocs.io`) returns HTTP 404. The current URL, from the PyPI project links of moments-popgen, is <https://momentsld.github.io/moments/>.
 
 ### 12.3 Unverified – removed
-- **Nielsen R, Slatkin M (2013) *An Introduction to Population Genetics: Theory and Applications*. Sinauer.** The only open ISBN record (9781605351537) gives Oxford University Press and 2017 (probably a later re-listing), so the 2013 Sinauer edition could not be confirmed. See Section 11, item 7.
+- None at present.
+- *History:* Nielsen R, Slatkin M (2013) was listed here at STOP 1, because the only open ISBN record (9781605351537) gives Oxford University Press and 2017. Amin confirmed the 2013 Sinauer edition on 2026-11-18, so it is now in the verified list, labelled "edition confirmed by the app author".
 
 ### 12.4 Verified reference list
 <!-- REFERENCES:START -->
-*66 verified references, generated from `docs/REFERENCES.bib` by `tools/render_reference_list.py`.*
+*67 verified references (all verified), generated from `docs/REFERENCES.bib` by `tools/render_reference_list.py`.*
 
 **Coalescent and SFS theory**
 
@@ -500,6 +510,7 @@ Interactive_DemoHis_expSFS/
 - Griffiths RC, Tavaré S (1998) The age of a mutation in a general coalescent tree. *Communications in Statistics. Stochastic Models* 14: 273–295. [doi:10.1080/15326349808807471](https://doi.org/10.1080/15326349808807471). `[griffiths1998age]`
 - Hudson RR (1990) Gene genealogies and the coalescent process. In: *Oxford Surveys in Evolutionary Biology* 7: 1–44. Oxford University Press, USA. ISBN 9780195062892, <https://home.uchicago.edu/~rhudson1/popgen356/OxfordSurveysEvolBiol7_1-44.pdf>. *No DOI.* `[hudson1990genealogies]`
 - Kingman JFC (1982) The coalescent. *Stochastic Processes and their Applications* 13: 235–248. [doi:10.1016/0304-4149(82)90011-4](https://doi.org/10.1016/0304-4149(82)90011-4). `[kingman1982coalescent]`
+- Nielsen R, Slatkin M (2013) An Introduction to Population Genetics: Theory and Applications. Sinauer Associates, Sunderland, MA. *No DOI; edition confirmed by the app author.* `[nielsen2013introduction]`
 - Polanski A, Kimmel M (2003) New Explicit Expressions for Relative Frequencies of Single-Nucleotide Polymorphisms With Application to Statistical Inference on Population Growth. *Genetics* 165: 427–436. [doi:10.1093/genetics/165.1.427](https://doi.org/10.1093/genetics/165.1.427). `[polanski2003new]`
 - Slatkin M, Hudson RR (1991) Pairwise comparisons of mitochondrial DNA sequences in stable and exponentially growing populations. *Genetics* 129: 555–562. [doi:10.1093/genetics/129.2.555](https://doi.org/10.1093/genetics/129.2.555). `[slatkin1991pairwise]`
 - Tajima F (1989) Statistical method for testing the neutral mutation hypothesis by DNA polymorphism. *Genetics* 123: 585–595. [doi:10.1093/genetics/123.3.585](https://doi.org/10.1093/genetics/123.3.585). `[tajima1989statistical]`

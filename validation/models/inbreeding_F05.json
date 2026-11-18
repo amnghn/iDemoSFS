@@ -1,0 +1,17 @@
+{
+ "mode": 1,
+ "ancestral": [
+  {
+   "nu": 3,
+   "T": 0.1,
+   "dyn": "sudden"
+  }
+ ],
+ "inbreeding": {
+  "on": true,
+  "F": [
+   0.5,
+   0.5
+  ]
+ }
+}

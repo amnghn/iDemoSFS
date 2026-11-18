@@ -8,7 +8,9 @@
 of a Markdown file (default: docs/DESIGN.md). Standard library only.
 
 Usage:
-  python3 tools/render_reference_list.py [docs/DESIGN.md]
+  python3 tools/render_reference_list.py [docs/DESIGN.md] [--cited-only]
+
+With --cited-only, only the entries cited in the Markdown file ([@key]) are listed.
 """
 
 import re
@@ -78,17 +80,28 @@ def fmt(etype, key, f):
     if etype == "misc":
         return f"- **{title}**. {au}. <{f.get('url', '')}> (checked {f.get('urldate', '')}). `[{key}]`"
     link = f"[doi:{f['doi']}](https://doi.org/{f['doi']})" if f.get("doi") else \
-        (f"ISBN {f['isbn']}, <{f['url']}>" if f.get("isbn") else f"<{f.get('url', '')}>")
+        (f"ISBN {f['isbn']}, <{f['url']}>" if f.get("isbn") else
+         (f"<{f['url']}>" if f.get("url") else ""))
+    link = f" {link}." if link else ""
     note = " *No DOI.*" if not f.get("doi") else ""
-    return f"- {au} ({year}) {title}. {src}. {link}.{note} `[{key}]`"
+    if "confirmed by the app author" in f.get("note", ""):
+        note = " *No DOI; edition confirmed by the app author.*"
+    return f"- {au} ({year}) {title}. {src}.{link}{note} `[{key}]`"
 
 
-def render():
+def cited_keys(text):
+    return set(re.findall(r"@([A-Za-z0-9_:\-]+)", " ".join(re.findall(r"\[[^\]]*@[^\]]*\]", text))))
+
+
+def render(only=None):
     entries = parse_bib(BIB.read_text(encoding="utf-8"))
+    if only is not None:
+        entries = [e for e in entries if e[1] in only]
     groups = {}
     for etype, key, f in entries:
         groups.setdefault(f.get("keywords", "Other"), []).append((etype, key, f))
-    out = [f"*{len(entries)} verified references, generated from `docs/REFERENCES.bib` by "
+    what = "cited" if only is not None else "verified"
+    out = [f"*{len(entries)} {what} references (all verified), generated from `docs/REFERENCES.bib` by "
            f"`tools/render_reference_list.py`.*", ""]
     for g in GROUP_ORDER + sorted(set(groups) - set(GROUP_ORDER)):
         if g not in groups:
@@ -103,11 +116,13 @@ def render():
 
 
 def main():
-    md = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "docs" / "DESIGN.md"
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    md = Path(args[0]) if args else ROOT / "docs" / "DESIGN.md"
     text = md.read_text(encoding="utf-8")
     if START not in text or END not in text:
         sys.exit(f"markers not found in {md}")
-    new = text.split(START)[0] + START + "\n" + render() + "\n" + END + text.split(END, 1)[1]
+    only = cited_keys(text.split(START)[0]) if "--cited-only" in sys.argv else None
+    new = text.split(START)[0] + START + "\n" + render(only) + "\n" + END + text.split(END, 1)[1]
     md.write_text(new, encoding="utf-8")
     print("reference list written into", md)
 

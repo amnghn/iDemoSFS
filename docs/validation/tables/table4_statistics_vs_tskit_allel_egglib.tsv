@@ -1,0 +1,323 @@
+scenario	statistic	reference	ref_value	ts_value	rel_diff	kind	ok
+snm	pop1: pi per site	tskit diversity	0.0004112605263	0.0004112605263	1.489504069e-14	exact	True
+snm	pop1: S per site	tskit segregating_sites	0.0013685	0.0013685	0	exact	True
+snm	pop1: Tajima's D	tskit Tajimas_D	0.2775300626	0.2775300626	2.404222561e-13	exact	True
+snm	pop1: pi (dataset)	allel mean_pairwise_difference	822.5210526	822.5210526	1.382175415e-16	exact	True
+snm	pop1: Tajima's D	allel tajima_d	0.2775300626	0.2775300626	2.200203675e-15	exact	True
+snm	pop1: S	egglib S	2737	2737	0	exact	True
+snm	pop1: thetaW	egglib thetaW	771.4771276	771.4771276	0	exact	True
+snm	pop1: thetaPi	egglib Pi	822.5210526	822.5210526	1.492749448e-14	exact	True
+snm	pop1: tajimaD	egglib D	0.2775300626	0.2775300626	2.404222561e-13	exact	True
+snm	pop1: fuLiD	egglib Dfl	0.215032319	0.215032319	0	exact	True
+snm	pop1: fuLiF	egglib F	0.29312733	0.29312733	9.942216713e-14	exact	True
+snm	pop1: fuLiDstar	egglib D*	0.2173557665	0.2173557665	0	exact	True
+snm	pop1: fuLiFstar	egglib F*	0.2753700053	0.2753700053	8.547310044e-14	exact	True
+snm	pop1: fayWuH	egglib Hns	70.2	70.2	0	exact	True
+snm	pop1: zengH	egglib Hsd	0.1708032042	0.1708032042	3.250006431e-15	exact	True
+snm	pop1: zengE	egglib E	0.08530134311	0.08530134311	0	exact	True
+snm	pop1: thetaH	egglib thetaH	752.3210526	752.3210526	1.511147898e-16	exact	True
+snm	pop1: thetaL	egglib thetaL	787.4210526	787.4210526	0	exact	True
+exp_exponential_recent	pop1: pi per site	tskit diversity	0.0004257815789	0.0004257815789	2.062568705e-14	exact	True
+exp_exponential_recent	pop1: S per site	tskit segregating_sites	0.001561	0.001561	0	exact	True
+exp_exponential_recent	pop1: Tajima's D	tskit Tajimas_D	-0.1355455966	-0.1355455966	6.198366418e-13	exact	True
+exp_exponential_recent	pop1: pi (dataset)	allel mean_pairwise_difference	851.5631579	851.5631579	0	exact	True
+exp_exponential_recent	pop1: Tajima's D	allel tajima_d	-0.1355455966	-0.1355455966	0	exact	True
+exp_exponential_recent	pop1: S	egglib S	3122	3122	0	exact	True
+exp_exponential_recent	pop1: thetaW	egglib thetaW	879.9969281	879.9969281	1.291900393e-16	exact	True
+exp_exponential_recent	pop1: thetaPi	egglib Pi	851.5631579	851.5631579	2.069307448e-14	exact	True
+exp_exponential_recent	pop1: tajimaD	egglib D	-0.1355455966	-0.1355455966	6.198366418e-13	exact	True
+exp_exponential_recent	pop1: fuLiD	egglib Dfl	-0.491738727	-0.491738727	0	exact	True
+exp_exponential_recent	pop1: fuLiF	egglib F	-0.4524743985	-0.4524743985	8.109380572e-14	exact	True
+exp_exponential_recent	pop1: fuLiDstar	egglib D*	-0.3326164863	-0.3326164863	0	exact	True
+exp_exponential_recent	pop1: fuLiFstar	egglib F*	-0.3184946663	-0.3184946663	9.394352143e-14	exact	True
+exp_exponential_recent	pop1: fayWuH	egglib Hns	56.70526316	56.70526316	0	exact	True
+exp_exponential_recent	pop1: zengH	egglib Hsd	0.1209738949	0.1209738949	7.91548755e-15	exact	True
+exp_exponential_recent	pop1: zengE	egglib E	-0.2664291435	-0.2664291435	2.083523991e-15	exact	True
+exp_exponential_recent	pop1: thetaH	egglib thetaH	794.8578947	794.8578947	1.430278777e-16	exact	True
+exp_exponential_recent	pop1: thetaL	egglib thetaL	823.2105263	823.2105263	1.381017784e-16	exact	True
+bottleneck_strong_recent	pop1: pi per site	tskit diversity	0.0002981157895	0.0002981157895	9.455807938e-15	exact	True
+bottleneck_strong_recent	pop1: S per site	tskit segregating_sites	0.000924	0.000924	0	exact	True
+bottleneck_strong_recent	pop1: Tajima's D	tskit Tajimas_D	0.606424059	0.606424059	7.561080441e-14	exact	True
+bottleneck_strong_recent	pop1: pi (dataset)	allel mean_pairwise_difference	596.2315789	596.2315789	0	exact	True
+bottleneck_strong_recent	pop1: Tajima's D	allel tajima_d	0.606424059	0.606424059	0	exact	True
+bottleneck_strong_recent	pop1: S	egglib S	1848	1848	0	exact	True
+bottleneck_strong_recent	pop1: thetaW	egglib thetaW	520.8950426	520.8950426	0	exact	True
+bottleneck_strong_recent	pop1: thetaPi	egglib Pi	596.2315789	596.2315789	9.533781985e-15	exact	True
+bottleneck_strong_recent	pop1: tajimaD	egglib D	0.606424059	0.606424059	7.561080441e-14	exact	True
+bottleneck_strong_recent	pop1: fuLiD	egglib Dfl	0.5306561018	0.5306561018	0	exact	True
+bottleneck_strong_recent	pop1: fuLiF	egglib F	0.6890538839	0.6890538839	2.900210696e-14	exact	True
+bottleneck_strong_recent	pop1: fuLiDstar	egglib D*	0.3861069981	0.3861069981	0	exact	True
+bottleneck_strong_recent	pop1: fuLiFstar	egglib F*	0.5295016476	0.5295016476	3.040261335e-14	exact	True
+bottleneck_strong_recent	pop1: fayWuH	egglib Hns	-72.58947368	-72.58947368	3.132322965e-15	exact	True
+bottleneck_strong_recent	pop1: zengH	egglib Hsd	-0.2614220963	-0.2614220963	3.185144945e-15	exact	True
+bottleneck_strong_recent	pop1: zengE	egglib E	0.8834746026	0.8834746026	1.005324224e-15	exact	True
+bottleneck_strong_recent	pop1: thetaH	egglib thetaH	668.8210526	668.8210526	3.399618994e-16	exact	True
+bottleneck_strong_recent	pop1: thetaL	egglib thetaL	632.5263158	632.5263158	1.797345579e-16	exact	True
+split_recent_nomig	pop1: pi per site	tskit diversity	0.0003901947368	0.0003901947368	1.861674151e-14	exact	True
+split_recent_nomig	pop1: S per site	tskit segregating_sites	0.00146	0.00146	0	exact	True
+split_recent_nomig	pop1: Tajima's D	tskit Tajimas_D	-0.217470499	-0.217470499	3.383448848e-13	exact	True
+split_recent_nomig	pop1: pi (dataset)	allel mean_pairwise_difference	780.3894737	780.3894737	0	exact	True
+split_recent_nomig	pop1: Tajima's D	allel tajima_d	-0.217470499	-0.217470499	0	exact	True
+split_recent_nomig	pop1: S	egglib S	2920	2920	0	exact	True
+split_recent_nomig	pop1: thetaW	egglib thetaW	823.0592665	823.0592665	0	exact	True
+split_recent_nomig	pop1: thetaPi	egglib Pi	780.3894737	780.3894737	1.850131105e-14	exact	True
+split_recent_nomig	pop1: tajimaD	egglib D	-0.217470499	-0.217470499	3.383448848e-13	exact	True
+split_recent_nomig	pop1: fuLiD	egglib Dfl	-0.3753178368	-0.3753178368	0	exact	True
+split_recent_nomig	pop1: fuLiF	egglib F	-0.395119666	-0.395119666	8.13448667e-14	exact	True
+split_recent_nomig	pop1: fuLiDstar	egglib D*	-0.3003238058	-0.3003238058	0	exact	True
+split_recent_nomig	pop1: fuLiFstar	egglib F*	-0.3214112691	-0.3214112691	8.082858716e-14	exact	True
+split_recent_nomig	pop1: fayWuH	egglib Hns	-22.8	-22.8	0	exact	True
+split_recent_nomig	pop1: zengH	egglib Hsd	-0.05200199345	-0.05200199345	1.00076364e-14	exact	True
+split_recent_nomig	pop1: zengE	egglib E	-0.156836123	-0.156836123	3.716408419e-15	exact	True
+split_recent_nomig	pop1: thetaH	egglib thetaH	803.1894737	803.1894737	0	exact	True
+split_recent_nomig	pop1: thetaL	egglib thetaL	791.7894737	791.7894737	1.435821535e-16	exact	True
+split_recent_nomig	pop2: pi per site	tskit diversity	0.0004067973684	0.0004067973684	1.305955018e-14	exact	True
+split_recent_nomig	pop2: S per site	tskit segregating_sites	0.0014425	0.0014425	0	exact	True
+split_recent_nomig	pop2: Tajima's D	tskit Tajimas_D	0.00206802714	0.00206802714	2.665613419e-11	exact	True
+split_recent_nomig	pop2: pi (dataset)	allel mean_pairwise_difference	813.5947368	813.5947368	0	exact	True
+split_recent_nomig	pop2: Tajima's D	allel tajima_d	0.00206802714	0.00206802714	0	exact	True
+split_recent_nomig	pop2: S	egglib S	2885	2885	0	exact	True
+split_recent_nomig	pop2: thetaW	egglib thetaW	813.1938301	813.1938301	4.194086336e-16	exact	True
+split_recent_nomig	pop2: thetaPi	egglib Pi	813.5947368	813.5947368	1.313499493e-14	exact	True
+split_recent_nomig	pop2: tajimaD	egglib D	0.00206802714	0.00206802714	2.665613419e-11	exact	True
+split_recent_nomig	pop2: fuLiD	egglib Dfl	0.0005456362948	0.0005456362948	0	exact	True
+split_recent_nomig	pop2: fuLiF	egglib F	0.001339097698	0.001339097698	1.796859098e-11	exact	True
+split_recent_nomig	pop2: fuLiDstar	egglib D*	0.0107175572	0.0107175572	0	exact	True
+split_recent_nomig	pop2: fuLiFstar	egglib F*	0.009444216818	0.009444216818	2.055023367e-12	exact	True
+split_recent_nomig	pop2: fayWuH	egglib Hns	42.45263158	42.45263158	0	exact	True
+split_recent_nomig	pop2: zengH	egglib Hsd	0.09799875817	0.09799875817	5.381251218e-15	exact	True
+split_recent_nomig	pop2: zengE	egglib E	-0.1057156376	-0.1057156376	0	exact	True
+split_recent_nomig	pop2: thetaH	egglib thetaH	771.1421053	771.1421053	1.474265728e-16	exact	True
+split_recent_nomig	pop2: thetaL	egglib thetaL	792.3684211	792.3684211	0	exact	True
+split_recent_nomig	pi1 per site	tskit diversity	0.0003901947368	0.0003901947368	1.778315607e-14	exact	True
+split_recent_nomig	pi2 per site	tskit diversity	0.0004067973684	0.0004067973684	1.279302875e-14	exact	True
+split_recent_nomig	dxy per site	tskit divergence	0.000407915	0.000407915	1.395403799e-14	exact	True
+split_recent_nomig	Fst (tskit definition)	tskit Fst	0.01168008218	0.01168008218	1.264200542e-12	exact	True
+split_recent_nomig	Hudson F_ST	allel hudson_fst	0.02309046583	0.02309046583	1.50254524e-16	exact	True
+split_recent_nomig	WC theta [hwe] genotype counts	allel weir_cockerham_fst	0.02158265543	0.02158265543	2.089771137e-14	exact	True
+split_recent_nomig	WC F_IS [hwe] genotype counts	allel weir_cockerham_fst	0.02928034521	0.02928034521	3.791700598e-15	exact	True
+split_recent_nomig	WC theta [hwe] SFS, h = 2p(1-p)2k/(2k-1)	allel weir_cockerham_fst	0.02158265543	0.02309046583	0.06986213562	approx	None
+split_recent_nomig	WC theta [hwe] SFS, h = 2p(1-p)	allel weir_cockerham_fst	0.02158265543	0.02037682823	0.05587019625	approx	None
+split_recent_nomig	WC theta [F0.3] genotype counts	allel weir_cockerham_fst	0.02279179601	0.02279179601	4.11003449e-15	exact	True
+split_recent_nomig	WC F_IS [F0.3] genotype counts	allel weir_cockerham_fst	0.3202238977	0.3202238977	9.014254977e-15	exact	True
+split_recent_nomig	WC theta [F0.3] SFS, h = 2p(1-p)2k/(2k-1)	allel weir_cockerham_fst	0.02279179601	0.03926155496	0.7226178637	approx	None
+split_recent_nomig	WC theta [F0.3] SFS, h = 2p(1-p)	allel weir_cockerham_fst	0.02279179601	0.03659283706	0.6055267007	approx	None
+split_recent_nomig	WC theta [F0.3] SFS, F_IS approximation	allel weir_cockerham_fst	0.02279179601	0.02324924754	0.02007088555	approx	None
+split_recent_nomig	WC F_IS [F0.3] SFS, F_IS approximation	allel weir_cockerham_fst	0.3202238977	0.3114754098	0.0273199095	approx	None
+split_recent_nomig	WC theta [F0.6] genotype counts	allel weir_cockerham_fst	0.0245712818	0.0245712818	2.965184584e-15	exact	True
+split_recent_nomig	WC F_IS [F0.6] genotype counts	allel weir_cockerham_fst	0.6185697402	0.6185697402	2.333269538e-15	exact	True
+split_recent_nomig	WC theta [F0.6] SFS, h = 2p(1-p)2k/(2k-1)	allel weir_cockerham_fst	0.0245712818	0.05632763384	1.292417396	approx	None
+split_recent_nomig	WC theta [F0.6] SFS, h = 2p(1-p)	allel weir_cockerham_fst	0.0245712818	0.05370632171	1.185735451	approx	None
+split_recent_nomig	WC theta [F0.6] SFS, F_IS approximation	allel weir_cockerham_fst	0.0245712818	0.0248718883	0.01223405868	approx	None
+split_recent_nomig	WC F_IS [F0.6] SFS, F_IS approximation	allel weir_cockerham_fst	0.6185697402	0.6129032258	0.009160671826	approx	None
+split_recent_nomig	WC theta [mean of hwe over random pairings] SFS, h = 2p(1-p)2k/(2k-1)	allel (mean sums)	0.02305644422	0.02309046583	0.001475579107	mean	None
+split_recent_nomig	WC theta [mean of hwe over random pairings] SFS, h = 2p(1-p)	allel (mean sums)	0.02305644422	0.02037682823	0.1162198283	mean	None
+split_recent_nomig	WC theta [mean of F0.3 over random pairings] SFS, h = 2p(1-p)2k/(2k-1)	allel (mean sums)	0.02341881299	0.03878360478	0.6560875569	mean	None
+split_recent_nomig	WC theta [mean of F0.3 over random pairings] SFS, h = 2p(1-p)	allel (mean sums)	0.02341881299	0.03611355924	0.5420747099	mean	None
+split_recent_nomig	WC theta [mean of F0.3 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.02341881299	0.02276333153	0.02798952518	mean	None
+split_recent_nomig	WC F_IS [mean of F0.3 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.298931669	0.3114754098	0.04196190007	mean	None
+split_recent_nomig	WC theta [mean of F0.6 over random pairings] SFS, h = 2p(1-p)2k/(2k-1)	allel (mean sums)	0.02268768771	0.05357271334	1.361312181	mean	None
+split_recent_nomig	WC theta [mean of F0.6 over random pairings] SFS, h = 2p(1-p)	allel (mean sums)	0.02268768771	0.05094374865	1.245435908	mean	None
+split_recent_nomig	WC theta [mean of F0.6 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.02268768771	0.02202513712	0.02920309013	mean	None
+split_recent_nomig	WC F_IS [mean of F0.6 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.6004380377	0.6129032258	0.02076015727	mean	None
+im_sym	pop1: pi per site	tskit diversity	0.0004578473684	0.0004578473684	1.184021409e-14	exact	True
+im_sym	pop1: S per site	tskit segregating_sites	0.001741	0.001741	0	exact	True
+im_sym	pop1: Tajima's D	tskit Tajimas_D	-0.2811572542	-0.2811572542	1.642684908e-13	exact	True
+im_sym	pop1: pi (dataset)	allel mean_pairwise_difference	915.6947368	915.6947368	1.241536433e-16	exact	True
+im_sym	pop1: Tajima's D	allel tajima_d	-0.2811572542	-0.2811572542	1.776942809e-15	exact	True
+im_sym	pop1: S	egglib S	3482	3482	0	exact	True
+im_sym	pop1: thetaW	egglib thetaW	981.4699884	981.4699884	0	exact	True
+im_sym	pop1: thetaPi	egglib Pi	915.6947368	915.6947368	1.179459611e-14	exact	True
+im_sym	pop1: tajimaD	egglib D	-0.2811572542	-0.2811572542	1.642684908e-13	exact	True
+im_sym	pop1: fuLiD	egglib Dfl	-0.4235522673	-0.4235522673	0	exact	True
+im_sym	pop1: fuLiF	egglib F	-0.4615030617	-0.4615030617	4.366286937e-14	exact	True
+im_sym	pop1: fuLiDstar	egglib D*	-0.319937682	-0.319937682	0	exact	True
+im_sym	pop1: fuLiFstar	egglib F*	-0.3600140674	-0.3600140674	4.564071866e-14	exact	True
+im_sym	pop1: fayWuH	egglib Hns	-1.242105263	-1.242105263	9.152753884e-14	exact	True
+im_sym	pop1: zengH	egglib Hsd	-0.002376186082	-0.002376186082	3.659352056e-13	exact	True
+im_sym	pop1: zengE	egglib E	-0.2741467429	-0.2741467429	1.619895991e-15	exact	True
+im_sym	pop1: thetaH	egglib thetaH	916.9368421	916.9368421	0	exact	True
+im_sym	pop1: thetaL	egglib thetaL	916.3157895	916.3157895	1.240694955e-16	exact	True
+im_sym	pop2: pi per site	tskit diversity	0.0004653052632	0.0004653052632	1.840769456e-14	exact	True
+im_sym	pop2: S per site	tskit segregating_sites	0.0017855	0.0017855	0	exact	True
+im_sym	pop2: Tajima's D	tskit Tajimas_D	-0.3165458544	-0.3165458544	2.260458412e-13	exact	True
+im_sym	pop2: pi (dataset)	allel mean_pairwise_difference	930.6105263	930.6105263	0	exact	True
+im_sym	pop2: Tajima's D	allel tajima_d	-0.3165458544	-0.3165458544	0	exact	True
+im_sym	pop2: S	egglib S	3571	3571	0	exact	True
+im_sym	pop2: thetaW	egglib thetaW	1006.556384	1006.556384	1.129463183e-16	exact	True
+im_sym	pop2: thetaPi	egglib Pi	930.6105263	930.6105263	1.844672074e-14	exact	True
+im_sym	pop2: tajimaD	egglib D	-0.3165458544	-0.3165458544	2.260458412e-13	exact	True
+im_sym	pop2: fuLiD	egglib Dfl	-0.4833485224	-0.4833485224	0	exact	True
+im_sym	pop2: fuLiF	egglib F	-0.5247784895	-0.5247784895	5.966000879e-14	exact	True
+im_sym	pop2: fuLiDstar	egglib D*	-0.3632980607	-0.3632980607	0	exact	True
+im_sym	pop2: fuLiFstar	egglib F*	-0.4078395812	-0.4078395812	6.247460911e-14	exact	True
+im_sym	pop2: fayWuH	egglib Hns	54.90526316	54.90526316	0	exact	True
+im_sym	pop2: zengH	egglib Hsd	0.102420211	0.102420211	8.265410197e-15	exact	True
+im_sym	pop2: zengE	egglib E	-0.4242435333	-0.4242435333	2.224405316e-15	exact	True
+im_sym	pop2: thetaH	egglib thetaH	875.7052632	875.7052632	0	exact	True
+im_sym	pop2: thetaL	egglib thetaL	903.1578947	903.1578947	2.517540695e-16	exact	True
+im_sym	pi1 per site	tskit diversity	0.0004578473684	0.0004578473684	1.231382265e-14	exact	True
+im_sym	pi2 per site	tskit diversity	0.0004653052632	0.0004653052632	1.852419896e-14	exact	True
+im_sym	dxy per site	tskit divergence	0.000534605	0.000534605	2.960943448e-14	exact	True
+im_sym	Fst (tskit definition)	tskit Fst	0.07330862671	0.07330862671	3.059190453e-13	exact	True
+im_sym	Hudson F_ST	allel hudson_fst	0.1366030699	0.1366030699	1.422288894e-15	exact	True
+im_sym	WC theta [hwe] genotype counts	allel weir_cockerham_fst	0.1367821933	0.1367821933	2.779977253e-14	exact	True
+im_sym	WC F_IS [hwe] genotype counts	allel weir_cockerham_fst	-0.003942624283	-0.003942624283	5.631898679e-14	exact	True
+im_sym	WC theta [hwe] SFS, h = 2p(1-p)2k/(2k-1)	allel weir_cockerham_fst	0.1367821933	0.1366030699	0.00130955161	approx	None
+im_sym	WC theta [hwe] SFS, h = 2p(1-p)	allel weir_cockerham_fst	0.1367821933	0.1342047451	0.018843448	approx	None
+im_sym	WC theta [F0.3] genotype counts	allel weir_cockerham_fst	0.1500125196	0.1500125196	3.145369378e-15	exact	True
+im_sym	WC F_IS [F0.3] genotype counts	allel weir_cockerham_fst	0.2933282418	0.2933282418	1.892458459e-15	exact	True
+im_sym	WC theta [F0.3] SFS, h = 2p(1-p)2k/(2k-1)	allel weir_cockerham_fst	0.1500125196	0.1631349055	0.08747527201	approx	None
+im_sym	WC theta [F0.3] SFS, h = 2p(1-p)	allel weir_cockerham_fst	0.1500125196	0.1608102803	0.07197906363	approx	None
+im_sym	WC theta [F0.3] SFS, F_IS approximation	allel weir_cockerham_fst	0.1500125196	0.149187154	0.005501978239	approx	None
+im_sym	WC F_IS [F0.3] SFS, F_IS approximation	allel weir_cockerham_fst	0.2933282418	0.3114754098	0.06186641951	approx	None
+im_sym	WC theta [F0.6] genotype counts	allel weir_cockerham_fst	0.1623937892	0.1623937892	1.982616938e-14	exact	True
+im_sym	WC F_IS [F0.6] genotype counts	allel weir_cockerham_fst	0.5969732714	0.5969732714	3.161580647e-15	exact	True
+im_sym	WC theta [F0.6] SFS, h = 2p(1-p)2k/(2k-1)	allel weir_cockerham_fst	0.1623937892	0.1887110797	0.1620584792	approx	None
+im_sym	WC theta [F0.6] SFS, h = 2p(1-p)	allel weir_cockerham_fst	0.1623937892	0.1864574994	0.1481812223	approx	None
+im_sym	WC theta [F0.6] SFS, F_IS approximation	allel weir_cockerham_fst	0.1623937892	0.1616681157	0.004468603738	approx	None
+im_sym	WC F_IS [F0.6] SFS, F_IS approximation	allel weir_cockerham_fst	0.5969732714	0.6129032258	0.02668453543	approx	None
+im_sym	WC theta [mean of hwe over random pairings] SFS, h = 2p(1-p)2k/(2k-1)	allel (mean sums)	0.136559651	0.1366030699	0.0003179486085	mean	None
+im_sym	WC theta [mean of hwe over random pairings] SFS, h = 2p(1-p)	allel (mean sums)	0.136559651	0.1342047451	0.01724452162	mean	None
+im_sym	WC theta [mean of F0.3 over random pairings] SFS, h = 2p(1-p)2k/(2k-1)	allel (mean sums)	0.1364066064	0.1500213031	0.09980965703	mean	None
+im_sym	WC theta [mean of F0.3 over random pairings] SFS, h = 2p(1-p)	allel (mean sums)	0.1364066064	0.1476602511	0.08250073045	mean	None
+im_sym	WC theta [mean of F0.3 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.1364066064	0.1358549914	0.004043902452	mean	None
+im_sym	WC F_IS [mean of F0.3 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.2995382288	0.3114754098	0.03985194506	mean	None
+im_sym	WC theta [mean of F0.6 over random pairings] SFS, h = 2p(1-p)2k/(2k-1)	allel (mean sums)	0.1362919659	0.1635370297	0.1999021999	mean	None
+im_sym	WC theta [mean of F0.6 over random pairings] SFS, h = 2p(1-p)	allel (mean sums)	0.1362919659	0.1612135214	0.1828541792	mean	None
+im_sym	WC theta [mean of F0.6 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.1362919659	0.1356549307	0.004674048115	mean	None
+im_sym	WC F_IS [mean of F0.6 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.5993416662	0.6129032258	0.02262742667	mean	None
+pulse_1to2	pop1: pi per site	tskit diversity	0.0004034026316	0.0004034026316	1.787282452e-14	exact	True
+pulse_1to2	pop1: S per site	tskit segregating_sites	0.001486	0.001486	0	exact	True
+pulse_1to2	pop1: Tajima's D	tskit Tajimas_D	-0.154787464	-0.154787464	4.671132442e-13	exact	True
+pulse_1to2	pop1: pi (dataset)	allel mean_pairwise_difference	806.8052632	806.8052632	0	exact	True
+pulse_1to2	pop1: Tajima's D	allel tajima_d	-0.154787464	-0.154787464	0	exact	True
+pulse_1to2	pop1: S	egglib S	2972	2972	0	exact	True
+pulse_1to2	pop1: thetaW	egglib thetaW	837.7164863	837.7164863	0	exact	True
+pulse_1to2	pop1: thetaPi	egglib Pi	806.8052632	806.8052632	1.789555553e-14	exact	True
+pulse_1to2	pop1: tajimaD	egglib D	-0.154787464	-0.154787464	4.671132442e-13	exact	True
+pulse_1to2	pop1: fuLiD	egglib Dfl	-0.1456126539	-0.1456126539	0	exact	True
+pulse_1to2	pop1: fuLiF	egglib F	-0.1840317349	-0.1840317349	1.7148178e-13	exact	True
+pulse_1to2	pop1: fuLiDstar	egglib D*	-0.139999949	-0.139999949	0	exact	True
+pulse_1to2	pop1: fuLiFstar	egglib F*	-0.1688375879	-0.1688375879	1.523915315e-13	exact	True
+pulse_1to2	pop1: fayWuH	egglib Hns	-26.07368421	-26.07368421	8.720427601e-15	exact	True
+pulse_1to2	pop1: zengH	egglib Hsd	-0.05842928461	-0.05842928461	1.757605462e-14	exact	True
+pulse_1to2	pop1: zengE	egglib E	-0.08808543187	-0.08808543187	1.260393462e-14	exact	True
+pulse_1to2	pop1: thetaH	egglib thetaH	832.8789474	832.8789474	2.729972659e-16	exact	True
+pulse_1to2	pop1: thetaL	egglib thetaL	819.8421053	819.8421053	2.773383728e-16	exact	True
+pulse_1to2	pop2: pi per site	tskit diversity	0.0004751447368	0.0004751447368	1.631512449e-14	exact	True
+pulse_1to2	pop2: S per site	tskit segregating_sites	0.001739	0.001739	0	exact	True
+pulse_1to2	pop2: Tajima's D	tskit Tajimas_D	-0.1286097825	-0.1286097825	5.181653817e-13	exact	True
+pulse_1to2	pop2: pi (dataset)	allel mean_pairwise_difference	950.2894737	950.2894737	1.19633902e-16	exact	True
+pulse_1to2	pop2: Tajima's D	allel tajima_d	-0.1286097825	-0.1286097825	3.66880945e-15	exact	True
+pulse_1to2	pop2: S	egglib S	3478	3478	0	exact	True
+pulse_1to2	pop2: thetaW	egglib thetaW	980.3425099	980.3425099	1.15966447e-16	exact	True
+pulse_1to2	pop2: thetaPi	egglib Pi	950.2894737	950.2894737	1.638984457e-14	exact	True
+pulse_1to2	pop2: tajimaD	egglib D	-0.1286097825	-0.1286097825	5.181653817e-13	exact	True
+pulse_1to2	pop2: fuLiD	egglib Dfl	-0.1720575734	-0.1720575734	0	exact	True
+pulse_1to2	pop2: fuLiF	egglib F	-0.1937592722	-0.1937592722	1.502668672e-13	exact	True
+pulse_1to2	pop2: fuLiDstar	egglib D*	-0.1176354943	-0.1176354943	0	exact	True
+pulse_1to2	pop2: fuLiFstar	egglib F*	-0.1413511233	-0.1413511233	1.676906488e-13	exact	True
+pulse_1to2	pop2: fayWuH	egglib Hns	55.42105263	55.42105263	0	exact	True
+pulse_1to2	pop2: zengH	egglib Hsd	0.1061440147	0.1061440147	2.614897852e-16	exact	True
+pulse_1to2	pop2: zengE	egglib E	-0.2433284285	-0.2433284285	0	exact	True
+pulse_1to2	pop2: thetaH	egglib thetaH	894.8684211	894.8684211	0	exact	True
+pulse_1to2	pop2: thetaL	egglib thetaL	922.5789474	922.5789474	0	exact	True
+pulse_1to2	pi1 per site	tskit diversity	0.0004034026316	0.0004034026316	1.841035308e-14	exact	True
+pulse_1to2	pi2 per site	tskit diversity	0.0004751447368	0.0004751447368	1.551648203e-14	exact	True
+pulse_1to2	dxy per site	tskit divergence	0.0005539325	0.0005539325	2.427029817e-14	exact	True
+pulse_1to2	Fst (tskit definition)	tskit Fst	0.115443115	0.115443115	1.750304385e-13	exact	True
+pulse_1to2	Hudson F_ST	allel hudson_fst	0.2069905914	0.2069905914	5.363640042e-16	exact	True
+pulse_1to2	WC theta [hwe] genotype counts	allel weir_cockerham_fst	0.2075899741	0.2075899741	3.436188556e-14	exact	True
+pulse_1to2	WC F_IS [hwe] genotype counts	allel weir_cockerham_fst	-0.01437168948	-0.01437168948	6.180055733e-14	exact	True
+pulse_1to2	WC theta [hwe] SFS, h = 2p(1-p)2k/(2k-1)	allel weir_cockerham_fst	0.2075899741	0.2069905914	0.002887339227	approx	None
+pulse_1to2	WC theta [hwe] SFS, h = 2p(1-p)	allel weir_cockerham_fst	0.2075899741	0.2047877875	0.01349866052	approx	None
+pulse_1to2	WC theta [F0.3] genotype counts	allel weir_cockerham_fst	0.2072023717	0.2072023717	9.510730272e-15	exact	True
+pulse_1to2	WC F_IS [F0.3] genotype counts	allel weir_cockerham_fst	0.2950799004	0.2950799004	7.148652768e-15	exact	True
+pulse_1to2	WC theta [F0.3] SFS, h = 2p(1-p)2k/(2k-1)	allel weir_cockerham_fst	0.2072023717	0.2195149319	0.05942287327	approx	None
+pulse_1to2	WC theta [F0.3] SFS, h = 2p(1-p)	allel weir_cockerham_fst	0.2072023717	0.2173469179	0.04895960463	approx	None
+pulse_1to2	WC theta [F0.3] SFS, F_IS approximation	allel weir_cockerham_fst	0.2072023717	0.2065068475	0.003356738574	approx	None
+pulse_1to2	WC F_IS [F0.3] SFS, F_IS approximation	allel weir_cockerham_fst	0.2950799004	0.3114754098	0.05556294893	approx	None
+pulse_1to2	WC theta [F0.6] genotype counts	allel weir_cockerham_fst	0.2094353288	0.2094353288	1.391520455e-14	exact	True
+pulse_1to2	WC F_IS [F0.6] genotype counts	allel weir_cockerham_fst	0.5928605276	0.5928605276	4.119840233e-15	exact	True
+pulse_1to2	WC theta [F0.6] SFS, h = 2p(1-p)2k/(2k-1)	allel weir_cockerham_fst	0.2094353288	0.234103465	0.117784026	approx	None
+pulse_1to2	WC theta [F0.6] SFS, h = 2p(1-p)	allel weir_cockerham_fst	0.2094353288	0.2319759746	0.1076258049	approx	None
+pulse_1to2	WC theta [F0.6] SFS, F_IS approximation	allel weir_cockerham_fst	0.2094353288	0.2085735805	0.004114627135	approx	None
+pulse_1to2	WC F_IS [F0.6] SFS, F_IS approximation	allel weir_cockerham_fst	0.5928605276	0.6129032258	0.03380676789	approx	None
+pulse_1to2	WC theta [mean of hwe over random pairings] SFS, h = 2p(1-p)2k/(2k-1)	allel (mean sums)	0.207024121	0.2069905914	0.0001619595597	mean	None
+pulse_1to2	WC theta [mean of hwe over random pairings] SFS, h = 2p(1-p)	allel (mean sums)	0.207024121	0.2047877875	0.01080228448	mean	None
+pulse_1to2	WC theta [mean of F0.3 over random pairings] SFS, h = 2p(1-p)2k/(2k-1)	allel (mean sums)	0.2067502123	0.2192526098	0.0604710262	mean	None
+pulse_1to2	WC theta [mean of F0.3 over random pairings] SFS, h = 2p(1-p)	allel (mean sums)	0.2067502123	0.2170838671	0.04998135015	mean	None
+pulse_1to2	WC theta [mean of F0.3 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.2067502123	0.2062401533	0.002467030099	mean	None
+pulse_1to2	WC F_IS [mean of F0.3 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.2994587031	0.3114754098	0.04012809333	mean	None
+pulse_1to2	WC theta [mean of F0.6 over random pairings] SFS, h = 2p(1-p)2k/(2k-1)	allel (mean sums)	0.2067918742	0.2318154982	0.1210087396	mean	None
+pulse_1to2	WC theta [mean of F0.6 over random pairings] SFS, h = 2p(1-p)	allel (mean sums)	0.2067918742	0.2296816524	0.1106899307	mean	None
+pulse_1to2	WC theta [mean of F0.6 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.2067918742	0.2062093482	0.002816967602	mean	None
+pulse_1to2	WC F_IS [mean of F0.6 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.5993998819	0.6129032258	0.02252810573	mean	None
+structured_one_population	pop1: pi per site	tskit diversity	0.0003147605263	0.0003147605263	1.257253562e-14	exact	True
+structured_one_population	pop1: S per site	tskit segregating_sites	0.0011055	0.0011055	0	exact	True
+structured_one_population	pop1: Tajima's D	tskit Tajimas_D	0.0424438937	0.0424438937	1.24362214e-12	exact	True
+structured_one_population	pop1: pi (dataset)	allel mean_pairwise_difference	629.5210526	629.5210526	1.805925906e-16	exact	True
+structured_one_population	pop1: Tajima's D	allel tajima_d	0.0424438937	0.0424438937	1.798323063e-14	exact	True
+structured_one_population	pop1: S	egglib S	2211	2211	0	exact	True
+structured_one_population	pop1: thetaW	egglib thetaW	623.2137117	623.2137117	0	exact	True
+structured_one_population	pop1: thetaPi	egglib Pi	629.5210526	629.5210526	1.246088875e-14	exact	True
+structured_one_population	pop1: tajimaD	egglib D	0.0424438937	0.0424438937	1.24362214e-12	exact	True
+structured_one_population	pop1: fuLiD	egglib Dfl	0.2100177138	0.2100177138	0	exact	True
+structured_one_population	pop1: fuLiF	egglib F	0.1865173543	0.1865173543	1.235119801e-13	exact	True
+structured_one_population	pop1: fuLiDstar	egglib D*	0.008439028054	0.008439028054	0	exact	True
+structured_one_population	pop1: fuLiFstar	egglib F*	0.02195991821	0.02195991821	8.553577304e-13	exact	True
+structured_one_population	pop1: fayWuH	egglib Hns	-237.9052632	-237.9052632	4.778660052e-16	exact	True
+structured_one_population	pop1: zengH	egglib Hsd	-0.7163394364	-0.7163394364	1.704841678e-15	exact	True
+structured_one_population	pop1: zengE	egglib E	0.8290850253	0.8290850253	9.373660041e-16	exact	True
+structured_one_population	pop1: thetaH	egglib thetaH	867.4263158	867.4263158	0	exact	True
+structured_one_population	pop1: thetaL	egglib thetaL	748.4736842	748.4736842	1.518915629e-16	exact	True
+structured_one_population	pop2: pi per site	tskit diversity	0.0003338842105	0.0003338842105	1.688564814e-14	exact	True
+structured_one_population	pop2: S per site	tskit segregating_sites	0.0011325	0.0011325	0	exact	True
+structured_one_population	pop2: Tajima's D	tskit Tajimas_D	0.1926936262	0.1926936262	3.876114404e-13	exact	True
+structured_one_population	pop2: pi (dataset)	allel mean_pairwise_difference	667.7684211	667.7684211	3.404977958e-16	exact	True
+structured_one_population	pop2: Tajima's D	allel tajima_d	0.1926936262	0.1926936262	7.778155994e-15	exact	True
+structured_one_population	pop2: S	egglib S	2265	2265	0	exact	True
+structured_one_population	pop2: thetaW	egglib thetaW	638.4346708	638.4346708	1.780712153e-16	exact	True
+structured_one_population	pop2: thetaPi	egglib Pi	667.7684211	667.7684211	1.702488979e-14	exact	True
+structured_one_population	pop2: tajimaD	egglib D	0.1926936262	0.1926936262	3.876114404e-13	exact	True
+structured_one_population	pop2: fuLiD	egglib Dfl	0.3061536087	0.3061536087	0	exact	True
+structured_one_population	pop2: fuLiF	egglib F	0.3289798379	0.3289798379	9.904876232e-14	exact	True
+structured_one_population	pop2: fuLiDstar	egglib D*	0.1230802157	0.1230802157	0	exact	True
+structured_one_population	pop2: fuLiFstar	egglib F*	0.168575094	0.168575094	1.577329178e-13	exact	True
+structured_one_population	pop2: fayWuH	egglib Hns	-173.0947368	-173.0947368	1.970369056e-15	exact	True
+structured_one_population	pop2: zengH	egglib Hsd	-0.5087862324	-0.5087862324	2.618521384e-15	exact	True
+structured_one_population	pop2: zengE	egglib E	0.7487764936	0.7487764936	0	exact	True
+structured_one_population	pop2: thetaH	egglib thetaH	840.8631579	840.8631579	1.352025435e-16	exact	True
+structured_one_population	pop2: thetaL	egglib thetaL	754.3157895	754.3157895	0	exact	True
+structured_one_population	pi1 per site	tskit diversity	0.0003147605263	0.0003147605263	1.360589471e-14	exact	True
+structured_one_population	pi2 per site	tskit diversity	0.0003338842105	0.0003338842105	1.591147613e-14	exact	True
+structured_one_population	dxy per site	tskit divergence	0.0005865025	0.0005865025	1.257040639e-14	exact	True
+structured_one_population	Fst (tskit definition)	tskit Fst	0.2878491142	0.2878491142	4.3969364e-14	exact	True
+structured_one_population	Hudson F_ST	allel hudson_fst	0.4470230418	0.4470230418	1.490155434e-15	exact	True
+structured_one_population	WC theta [hwe] genotype counts	allel weir_cockerham_fst	0.4470659166	0.4470659166	4.718372992e-15	exact	True
+structured_one_population	WC F_IS [hwe] genotype counts	allel weir_cockerham_fst	-0.001473271262	-0.001473271262	3.01430715e-13	exact	True
+structured_one_population	WC theta [hwe] SFS, h = 2p(1-p)2k/(2k-1)	allel weir_cockerham_fst	0.4470659166	0.4470230418	9.590271807e-05	approx	None
+structured_one_population	WC theta [hwe] SFS, h = 2p(1-p)	allel weir_cockerham_fst	0.4470659166	0.4454869947	0.003531743047	approx	None
+structured_one_population	WC theta [F0.3] genotype counts	allel weir_cockerham_fst	0.4506154492	0.4506154492	7.268188271e-15	exact	True
+structured_one_population	WC F_IS [F0.3] genotype counts	allel weir_cockerham_fst	0.2982215085	0.2982215085	1.973091096e-14	exact	True
+structured_one_population	WC theta [F0.3] SFS, h = 2p(1-p)2k/(2k-1)	allel weir_cockerham_fst	0.4506154492	0.4592385171	0.01913620113	approx	None
+structured_one_population	WC theta [F0.3] SFS, h = 2p(1-p)	allel weir_cockerham_fst	0.4506154492	0.4577364019	0.01580272636	approx	None
+structured_one_population	WC theta [F0.3] SFS, F_IS approximation	allel weir_cockerham_fst	0.4506154492	0.4502258257	0.0008646474844	approx	None
+structured_one_population	WC F_IS [F0.3] SFS, F_IS approximation	allel weir_cockerham_fst	0.2982215085	0.3114754098	0.04444314364	approx	None
+structured_one_population	WC theta [F0.6] genotype counts	allel weir_cockerham_fst	0.4511764784	0.4511764784	8.243442003e-15	exact	True
+structured_one_population	WC F_IS [F0.6] genotype counts	allel weir_cockerham_fst	0.5953926162	0.5953926162	3.729381234e-16	exact	True
+structured_one_population	WC theta [F0.6] SFS, h = 2p(1-p)2k/(2k-1)	allel weir_cockerham_fst	0.4511764784	0.4683746611	0.03811852696	approx	None
+structured_one_population	WC theta [F0.6] SFS, h = 2p(1-p)	allel weir_cockerham_fst	0.4511764784	0.4668979241	0.0348454462	approx	None
+structured_one_population	WC theta [F0.6] SFS, F_IS approximation	allel weir_cockerham_fst	0.4511764784	0.4506538165	0.001158442204	approx	None
+structured_one_population	WC F_IS [F0.6] SFS, F_IS approximation	allel weir_cockerham_fst	0.5953926162	0.6129032258	0.02941018948	approx	None
+structured_one_population	WC theta [mean of hwe over random pairings] SFS, h = 2p(1-p)2k/(2k-1)	allel (mean sums)	0.4472031236	0.4470230418	0.000402684557	mean	None
+structured_one_population	WC theta [mean of hwe over random pairings] SFS, h = 2p(1-p)	allel (mean sums)	0.4472031236	0.4454869947	0.003837470731	mean	None
+structured_one_population	WC theta [mean of F0.3 over random pairings] SFS, h = 2p(1-p)2k/(2k-1)	allel (mean sums)	0.446778635	0.455553802	0.01964097264	mean	None
+structured_one_population	WC theta [mean of F0.3 over random pairings] SFS, h = 2p(1-p)	allel (mean sums)	0.446778635	0.4540414514	0.01625596174	mean	None
+structured_one_population	WC theta [mean of F0.3 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.446778635	0.4464796987	0.0006690927665	mean	None
+structured_one_population	WC F_IS [mean of F0.3 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.3013769579	0.3114754098	0.03350771087	mean	None
+structured_one_population	WC theta [mean of F0.6 over random pairings] SFS, h = 2p(1-p)2k/(2k-1)	allel (mean sums)	0.4471515966	0.4645940727	0.03900797011	mean	None
+structured_one_population	WC theta [mean of F0.6 over random pairings] SFS, h = 2p(1-p)	allel (mean sums)	0.4471515966	0.4631068341	0.03568194221	mean	None
+structured_one_population	WC theta [mean of F0.6 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.4471515966	0.4467472085	0.0009043647129	mean	None
+structured_one_population	WC F_IS [mean of F0.6 over random pairings] SFS, F_IS approximation	allel (mean sums)	0.5994537457	0.6129032258	0.02243622663	mean	None
