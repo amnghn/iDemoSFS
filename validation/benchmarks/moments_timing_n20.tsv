@@ -1,0 +1,14 @@
+model	shape	ms_median	ms_min	repeats	max_rel_dt_error_0.02_vs_0.002	status
+snm_1d	21	1.77	1.73	5	NA	OK
+two_epoch_expansion_1d	21	3.12	3.09	5	1.708e-06	OK
+bottleneck_recovery_1d	21	4.44	4.41	5	2.806e-05	OK
+exponential_growth_1d	21	8.13	7.92	5	2.774e-04	OK
+linear_growth_1d	21	7.29	7.26	5	3.112e-05	OK
+selection_gamma-10_1d	21	6.50	6.39	5	6.103e-05	OK
+split_nomig_2d	21x21	38.50	38.20	5	2.020e-04	OK
+im_symmetric_2d	21x21	59.10	58.63	5	4.281e-05	OK
+im_exponential_2d	21x21	304.20	295.00	5	1.385e-04	OK
+secondary_contact_2d	21x21	87.60	87.23	5	9.253e-05	OK
+im_selection_gamma-5_2d	21x21	60.83	60.37	5	5.590e-05	OK
+admixture_pulse_from_demes_2d	21x21	127.69	126.72	5	NA	OK
+im_from_demes_2d	21x21	59.01	58.66	5	NA	OK

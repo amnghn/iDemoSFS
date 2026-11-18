@@ -1,0 +1,36 @@
+# Local environments (rebuild from envs/sfs-validate.lock.txt)
+envs/*
+!envs/sfs-validate.lock.txt
+
+# Node / Vite
+node_modules/
+app/node_modules/
+app/dist/
+app/.vite/
+*.tsbuildinfo
+
+# SLURM logs and large validation outputs
+validation/logs/
+validation/output_large/
+*.trees
+*.npz
+
+# Python caches
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local-only project logs (decision 2026-11-18)
+change_log.md
+plans_ideas.md
+
+# Private test data (never commit Amin's unpublished spectra)
+private_test_data/
+
+# Editors / OS
+.DS_Store
+.vscode/
+*.swp
+
+# Original prompt file (the tracked copy is docs/PROMPT.md)
+PROMPT_Interactive_DemoHis_expSFS.md
