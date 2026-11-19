@@ -226,6 +226,10 @@ describe("content and references", () => {
   it("the contact email is set (given by the author at STOP 3)", () => {
     expect(SITE.email).toEqual(["aminghane", "univie.ac.at"]);
   });
+  it("the repository URL is set (given by the author at STOP 3)", () => {
+    expect(SITE.repo).toBe("https://github.com/amnghn/iDemoSFS");
+    expect(SITE.repoIsPlaceholder).toBe(false);
+  });
   it("related tools: only links that were checked", () => {
     expect(RELATED_TOOLS.length).toBeGreaterThan(5);
     for (const t of RELATED_TOOLS) expect(t.url).toMatch(/^https?:\/\//);

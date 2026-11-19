@@ -1,8 +1,8 @@
 /**
  * The About tab: author, contact (email built at run time, so that it is hard for spam bots to
  * read), feedback, citation, licence, disclaimer, AI declaration, validation, version, related
- * tools and the reference list. Placeholders stay until the author gives the email address and
- * the repository URL (STOP 3).
+ * tools and the reference list. The email address and the repository URL are set in
+ * site_config.ts.
  */
 
 import { DOCS, BUILD, REFERENCE_LIST, RELATED_TOOLS } from "../generated/content.ts";

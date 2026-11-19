@@ -483,3 +483,5 @@ DOIs marked † were checked when this prompt was written. Verify all others bef
 1. **Contact email:** Amin's academic address, aminghane [at] univie.ac.at. Show it on the About page (built at run time) and in the README.
 2. **`existing_tools.md`** (Amin's survey of related tools) stays in the project folder but is not public: add it to `.gitignore`.
 3. **GitHub repository URL:** Amin will give it later. Keep the repository placeholders until then, and remind Amin.
+4. **GitHub repository URL** (given later on 2026-11-19): `https://github.com/amnghn/iDemoSFS.git`. The site will be at `https://amnghn.github.io/iDemoSFS/`.
+5. **Git identity:** use Amin's GitHub noreply address for all commits (the local commits were rewritten before the first push).

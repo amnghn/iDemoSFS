@@ -255,3 +255,13 @@ Every entry has an ISO 8601 timestamp in Vienna time (`TZ=Europe/Vienna date -Im
 #### Changed
 - The author and committer address of every commit is now the author's GitHub noreply address, so that no personal email is published in the commit history. The four local commits were rewritten before the first push; their contents and dates are unchanged.
 
+### 2026-11-19T11:49+01:00 | STOP 3, part 2: repository URL, ready to publish
+
+#### Changed
+- The repository is <https://github.com/amnghn/iDemoSFS>, and the site will be at <https://amnghn.github.io/iDemoSFS/>. The URL is set in `app/src/site_config.ts` (About page: Issues link, links to `docs/PROMPT.md`, `CHANGELOG.md` and `CITATION.cff`, citation text), the README (live site, repository, citation, Issues) and `CITATION.cff` (`repository-code` and `url`). No placeholder is left.
+- Tests check the repository links on the About page (99 of 99 pass). Typecheck and build pass; a headless Firefox check of all four tabs showed no console errors.
+- `docs/PROMPT.md`: the repository URL and the git identity are recorded under the answers at STOP 3.
+
+#### Notes
+- Local commit. Nothing was pushed; the author pushes.
+

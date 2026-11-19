@@ -1,5 +1,4 @@
-# Citation metadata (https://citation-file-format.github.io/). The repository URL is a
-# placeholder until the repository exists (it is set before publication).
+# Citation metadata (https://citation-file-format.github.io/).
 cff-version: 1.2.0
 message: "If you use this tool, please cite it as below, and cite the methods it builds on (in particular moments)."
 title: "Demographic history and the expected SFS: an interactive teaching tool"
@@ -10,7 +9,8 @@ authors:
     given-names: Amin
     affiliation: "Department of Botany and Biodiversity Research, University of Vienna"
 license: MIT
-repository-code: "https://github.com/REPO_OWNER/REPO_NAME"
+repository-code: "https://github.com/amnghn/iDemoSFS"
+url: "https://amnghn.github.io/iDemoSFS/"
 keywords:
   - population genetics
   - site frequency spectrum

@@ -2,7 +2,8 @@
 
 **An interactive teaching tool (beta, v0.1.0-beta).** Change a population's history (sizes, times, the type of size change, a split, migration, an admixture pulse) and see, at once, a drawing of the history, the expected site frequency spectrum (SFS, 1D and joint 2D, folded and unfolded) and the classic statistics computed from it. A Statistics tab also works as a calculator for your own SFS files. The app runs entirely in the browser: there is no server, and no data leave your computer.
 
-- **Live site:** `https://REPO_OWNER.github.io/REPO_NAME/` (placeholder until the repository is published)
+- **Live site:** <https://amnghn.github.io/iDemoSFS/>
+- **Repository:** <https://github.com/amnghn/iDemoSFS>
 - **Validation report:** [`docs/VALIDATION.md`](docs/VALIDATION.md)
 - **Design note:** [`docs/DESIGN.md`](docs/DESIGN.md)
 - **Change log:** [`CHANGELOG.md`](CHANGELOG.md)
@@ -48,7 +49,7 @@ The workflow `.github/workflows/deploy-pages.yml` installs, tests, builds and pu
 
 1. Create the repository on GitHub and push this folder (branch `main`).
 2. In the repository, open **Settings → Pages** and set **Source** to **GitHub Actions**.
-3. The site appears at `https://<user>.github.io/<repository>/` after the workflow finishes.
+3. The site appears at <https://amnghn.github.io/iDemoSFS/> after the workflow finishes (for a fork: `https://<user>.github.io/<repository>/`).
 
 The build uses relative paths, so it works under any repository name.
 
@@ -75,7 +76,7 @@ The validation pipeline runs on an HPC cluster (SLURM). Its Python environment i
 
 ## How to cite
 
-> Ghane A (2026) Demographic history and the expected SFS: an interactive teaching tool. Version 0.1.0-beta. `https://github.com/REPO_OWNER/REPO_NAME`
+> Ghane A (2026) Demographic history and the expected SFS: an interactive teaching tool. Version 0.1.0-beta. https://github.com/amnghn/iDemoSFS
 
 See [`CITATION.cff`](CITATION.cff). Please also cite the methods the tool builds on, in particular moments (Jouganous et al. 2017, Genetics 206: 1549–1567, doi:10.1534/genetics.117.200493).
 
@@ -106,4 +107,4 @@ tools/                reference and link checks
 
 ## Contact and feedback
 
-Author: Amin Ghane, PhD student in Ecology and Evolution, Department of Botany and Biodiversity Research, University of Vienna. Contact: aminghane [at] univie.ac.at. Ideas, suggestions and bug reports are very welcome, by email or through the GitHub Issues of this repository.
+Author: Amin Ghane, PhD student in Ecology and Evolution, Department of Botany and Biodiversity Research, University of Vienna. Contact: aminghane [at] univie.ac.at. Ideas, suggestions and bug reports are very welcome, by email or through the [GitHub Issues](https://github.com/amnghn/iDemoSFS/issues) of this repository.

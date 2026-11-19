@@ -65,6 +65,11 @@ describe("page", () => {
     expect(mail.getAttribute("href")).toBe("#");
     mail.dispatchEvent(new Event("focus"));
     expect(mail.getAttribute("href")).toBe("mailto:aminghane@univie.ac.at");
+    const hrefs = [...about.querySelectorAll("a")].map((x) => x.getAttribute("href") ?? "");
+    expect(hrefs).toContain("https://github.com/amnghn/iDemoSFS/issues");
+    expect(hrefs).toContain("https://github.com/amnghn/iDemoSFS/blob/main/docs/PROMPT.md");
+    expect(hrefs).toContain("https://github.com/amnghn/iDemoSFS/blob/main/CHANGELOG.md");
+    expect(about.textContent).not.toMatch(/REPO_OWNER|placeholder/i);
     expect(document.querySelector("#about-ai")!.textContent).toMatch(/Claude Code/);
   });
 });
