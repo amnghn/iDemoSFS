@@ -250,3 +250,8 @@ Every entry has an ISO 8601 timestamp in Vienna time (`TZ=Europe/Vienna date -Im
 - The repository URL is still a placeholder (`site_config.ts`, README, CITATION.cff); the author will give it later.
 - Local commit. Nothing was pushed.
 
+### 2026-11-19T11:30+01:00 | Git author address
+
+#### Changed
+- The author and committer address of every commit is now the author's GitHub noreply address, so that no personal email is published in the commit history. The four local commits were rewritten before the first push; their contents and dates are unchanged.
+
