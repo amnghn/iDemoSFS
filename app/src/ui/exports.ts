@@ -13,7 +13,7 @@ const g17 = (x: number): string => (Number.isFinite(x) ? Number(x.toPrecision(12
 
 function header(m: Model, s: AppState): string[] {
   return [
-    `Expected SFS from the app "Demographic history and the expected SFS" v${BUILD.version}`,
+    `Expected SFS from iDemoSFS (Demographic history and the expected SFS) v${BUILD.version}`,
     `theta = 4 N_ref mu L = ${g17(thetaOf(s.units))} (N_ref = ${s.units.Nref}, mu = ${s.units.mu}, L = ${s.units.L})`,
     `model (JSON): ${JSON.stringify(m)}`,
   ];
@@ -66,6 +66,6 @@ export function demesYaml(m: Model, s: AppState): string {
   return toDemesYaml(m, {
     Nref: s.units.Nref,
     generationTime: s.units.physical ? s.units.gen : undefined,
-    description: `Exported from "Demographic history and the expected SFS" v${BUILD.version}`,
+    description: `Exported from iDemoSFS (Demographic history and the expected SFS) v${BUILD.version}`,
   });
 }

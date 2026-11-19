@@ -14,6 +14,8 @@ export const SITE = {
   /** Default branch used for links to files in the repository. */
   branch: "main",
   year: 2026,
+  /** Short name of the tool (header, page title, exports). */
+  name: "iDemoSFS",
   title: "Demographic history and the expected SFS",
 };
 

@@ -3,7 +3,7 @@ Text of the "About" tab. Placeholders in double braces are filled at run time fr
 src/site_config.ts and the build information (version, date of the last change).
 -->
 
-**Demographic history and the expected SFS** is a free teaching tool. It shows how changes in population size, population splits, migration and admixture shape the expected site frequency spectrum, and it computes classic statistics from expected or observed spectra. It runs entirely in your web browser: no data are sent to a server.
+**iDemoSFS** (*Demographic history and the expected SFS*) is a free teaching tool. It shows how changes in population size, population splits, migration and admixture shape the expected site frequency spectrum, and it computes classic statistics from expected or observed spectra. It runs entirely in your web browser: no data are sent to a server.
 
 ## Developer {#about-author}
 

@@ -44,7 +44,7 @@ export function toDemesYaml(m: Model, opts: DemesOptions = {}): string {
   const gt = opts.generationTime;
   const tScale = 2 * Nref * (gt ?? 1); // 2 N_ref generations -> generations (or years)
   const lines: string[] = [];
-  lines.push(`description: ${JSON.stringify(opts.description ?? "Model exported by the app 'Demographic history and the expected SFS'")}`);
+  lines.push(`description: ${JSON.stringify(opts.description ?? "Model exported by iDemoSFS (Demographic history and the expected SFS)")}`);
   lines.push(`time_units: ${gt ? "years" : "generations"}`);
   if (gt) lines.push(`generation_time: ${num(gt)}`);
   // metadata

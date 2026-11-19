@@ -1,4 +1,4 @@
-# Demographic history and the expected SFS
+# iDemoSFS: Demographic history and the expected SFS
 
 **An interactive teaching tool (beta, v0.2.1-beta).** Change a population's history (sizes, times, the type of size change, a split, migration, an admixture pulse) and see, at once, a drawing of the history, the expected site frequency spectrum (SFS, 1D and joint 2D, folded and unfolded) and the classic statistics computed from it. A Statistics tab also works as a calculator for your own SFS files. The app runs entirely in the browser: there is no server, and no data leave your computer.
 

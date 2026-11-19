@@ -230,6 +230,7 @@ describe("content and references", () => {
     const html = readFileSync(new URL("../index.html", import.meta.url), "utf-8");
     expect(html).toMatch(/<title>iDemoSFS: an interactive tool for demographic history and the expected SFS<\/title>/);
     expect(html).toMatch(/<link rel="canonical" href="https:\/\/amnghn\.github\.io\/iDemoSFS\/" \/>/);
+    expect(html).toMatch(/<meta name="google-site-verification" content="Y11Pu5A3iYskO289fvly20qk0cCtoevgZqeEALvQ1vQ" \/>/);
     const sitemap = readFileSync(new URL("../public/sitemap.xml", import.meta.url), "utf-8");
     expect(sitemap).toMatch(/<loc>https:\/\/amnghn\.github\.io\/iDemoSFS\/<\/loc>/);
     expect(readFileSync(new URL("../bench.html", import.meta.url), "utf-8")).toMatch(/name="robots" content="noindex"/);

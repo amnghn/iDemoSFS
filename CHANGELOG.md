@@ -17,6 +17,16 @@ Every entry has an ISO 8601 timestamp in Vienna time (`TZ=Europe/Vienna date -Im
 - The engine-timing page `bench.html` asks search engines not to index it.
 - Version 0.2.1-beta. Vitest: 106 of 106 pass (new test: title, canonical address, sitemap).
 
+### 2026-11-19T15:11+01:00 | The name iDemoSFS in the header and README; Google Search Console
+
+#### Changed
+- The header shows the name **iDemoSFS**, with "Demographic history and the expected SFS" below it. The header now fits on one row on screens from about 1100 px wide.
+- The README title, the first sentence of the About page and the exported files (CSV, `.fs`, Demes YAML) name iDemoSFS. The citation text is unchanged.
+
+#### Added
+- The Google Search Console ownership tag (`google-site-verification`) in `app/index.html`.
+- Tests: the header name and the ownership tag (106 of 106 pass). Headless Firefox: no console errors and no horizontal scrolling at 1440, 1100 and 400 px.
+
 ## [0.2.0-beta] – 2026-11-19
 
 ### 2026-11-19T12:32+01:00 | Requests after the first deployment: upload, theme button, new-tab links, Developer, Reset

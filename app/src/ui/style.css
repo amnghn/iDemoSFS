@@ -171,10 +171,21 @@ a:hover {
   gap: 10px;
 }
 .brand h1 {
+  display: flex;
+  flex-direction: column;
   margin: 0;
-  font-size: 1.15rem;
-  font-weight: 650;
+  line-height: 1.2;
+}
+.brand-name {
+  font-size: 1.3rem;
+  font-weight: 700;
   letter-spacing: -0.01em;
+}
+.brand-sub {
+  color: var(--ink-2);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-wrap: balance;
 }
 .badge {
   display: inline-block;

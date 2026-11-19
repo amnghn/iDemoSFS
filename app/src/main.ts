@@ -16,6 +16,7 @@ import { mountLearnView } from "./ui/learnView.ts";
 import { mountAboutView } from "./ui/aboutView.ts";
 import { applyPreset, presetById } from "./ui/presets.ts";
 import { BUILD } from "./generated/content.ts";
+import { SITE } from "./site_config.ts";
 import { h, debounce, watchExternalLinks } from "./ui/dom.ts";
 import { initTheme, themeButton, resetButton } from "./ui/theme.ts";
 
@@ -74,7 +75,7 @@ function boot(): void {
     h(
       "div",
       { class: "brand" },
-      h("h1", {}, "Demographic history and the expected SFS"),
+      h("h1", {}, h("span", { class: "brand-name" }, SITE.name), h("span", { class: "visually-hidden" }, ": "), h("span", { class: "brand-sub" }, SITE.title)),
       h("span", { class: "badge", title: "Beta version: a work in progress. See the disclaimer on the About page." }, "Beta"),
     ),
     h("div", { class: "header-right" }, nav, h("div", { class: "header-actions" }, resetButton(resetAll), themeButton())),

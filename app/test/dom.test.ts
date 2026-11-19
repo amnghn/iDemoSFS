@@ -31,6 +31,7 @@ describe("page", () => {
     expect(document.querySelector(".what-text")!.textContent).toMatch(/Migration keeps alleles shared/);
     expect((document.querySelector('[data-key="preset"]') as HTMLSelectElement).value).toBe("im_sym");
     expect(document.querySelector(".badge")!.textContent).toBe("Beta");
+    expect(document.querySelector(".brand h1")!.textContent).toBe("iDemoSFS: Demographic history and the expected SFS");
     expect(document.querySelector(".site-footer")!.textContent).toMatch(/v0\.2\.1-beta/);
   });
 
