@@ -4,7 +4,28 @@ All notable changes to this project are recorded in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html) with a `-beta` suffix.
 Every entry has an ISO 8601 timestamp in Vienna time (`TZ=Europe/Vienna date -Iminutes`).
 
-## [Unreleased] (target: 0.1.0-beta)
+## [0.2.0-beta] – 2026-11-19
+
+### 2026-11-19T12:32+01:00 | Requests after the first deployment: upload, theme button, new-tab links, Developer, Reset
+
+#### Added
+- **Theme button** in the header: switches between the light and the dark theme. Without a choice, the page follows the system setting. The choice is remembered in the browser (local storage) and applied before the page is drawn; all plots are drawn again in the new colours.
+- **Reset button** in the header: clears all changes (model, display settings, pinned spectrum, calculator data, sweep) and starts again with the default model on the Model tab. The theme choice is kept, and the browser's Back button returns to the previous model. Changing tabs keeps all changes, as before.
+- **"Upload your own SFS"** button at the top of the Statistics tab: it switches to the calculator and opens the file picker. The Summary statistics card of the Model tab links to it (`#stats-upload`).
+- `app/scripts/browser_check.mjs --extras`: checks the theme button, tabs, new-tab links, real file uploads (WebDriver BiDi `input.setFiles`; a `.fs` file and a gzipped VCF) and Reset.
+
+#### Changed
+- **Links to other sites** (references, DOIs, GitHub files and Issues, related tools) open in a new tab, so that the app stays open. Screen readers announce "opens in a new tab". Links inside the app are unchanged.
+- **File inputs** are shown as clear buttons with the name of the chosen file ("Upload a spectrum file", "VCF file", "Genotype table", "Pop 1 file", "Pop 2 file"). The same file can be read again after an edit.
+- The calculator option is called "my own data (upload)", and the Statistics intro says that files are not sent to a server.
+- About page: "Who made it" is now "Developer".
+- Version 0.2.0-beta (`app/package.json`, `CITATION.cff`, README, `LICENSE-CONTENT.md`).
+
+#### Notes
+- Vitest: 105 of 105 pass. Typecheck and build pass. Headless Firefox: no console errors; the details are in `docs/VALIDATION.md`, Section 11.7.
+- Local commit. Nothing was pushed; the author pushes.
+
+## [0.1.0-beta] – 2026-11-19 (first public version)
 
 ### 2026-11-18T14:35+01:00 | Phase 0, step 0.1: project skeleton
 

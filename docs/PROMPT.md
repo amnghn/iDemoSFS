@@ -485,3 +485,14 @@ DOIs marked † were checked when this prompt was written. Verify all others bef
 3. **GitHub repository URL:** Amin will give it later. Keep the repository placeholders until then, and remind Amin.
 4. **GitHub repository URL** (given later on 2026-11-19): `https://github.com/amnghn/iDemoSFS.git`. The site will be at `https://amnghn.github.io/iDemoSFS/`.
 5. **Git identity:** use Amin's GitHub noreply address for all commits (the local commits were rewritten before the first push).
+
+### 2026-11-19 (after the first deployment)
+
+Amin pushed the repository and set GitHub Pages to GitHub Actions; the site is at https://amnghn.github.io/iDemoSFS/. The download buttons work. Requests:
+
+1. **Upload:** the upload button was hard to find. Make it easy to find.
+2. **Theme:** the site opened in dark mode in one browser and in light mode in another. Add a button so that learners can switch between the dark and the light theme.
+3. **Links:** references and all other external links (for example GitHub files and the Issues page) open in a new tab, so that the learner does not lose the app.
+4. **About page:** write "Developer" instead of "Who made it".
+5. **Reset button:** it clears all changes and goes back to the main page with the default parameters. Changing tabs must keep the changes.
+

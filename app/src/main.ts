@@ -1,7 +1,8 @@
 /**
  * Entry point: header (title, Beta badge, navigation), four views (Model, Statistics, Learn,
  * About) switched by the URL hash, and the footer (version, one-line disclaimer). The model
- * state comes from the URL (?v=1&s=...) when present and is written back to it.
+ * state comes from the URL (?v=1&s=...) when present and is written back to it, so it stays the
+ * same when the visitor changes tabs. The header has a theme button and a Reset button.
  */
 
 import "katex/dist/katex.min.css";
@@ -15,7 +16,8 @@ import { mountLearnView } from "./ui/learnView.ts";
 import { mountAboutView } from "./ui/aboutView.ts";
 import { applyPreset, presetById } from "./ui/presets.ts";
 import { BUILD } from "./generated/content.ts";
-import { h, debounce } from "./ui/dom.ts";
+import { h, debounce, watchExternalLinks } from "./ui/dom.ts";
+import { initTheme, themeButton, resetButton } from "./ui/theme.ts";
 
 const TABS = [
   { id: "model", label: "Model" },
@@ -25,7 +27,28 @@ const TABS = [
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
 
+/**
+ * Reset: start again with the default model on the Model tab. The page is loaded again without
+ * the model in its address, so every change (model, display, pinned spectrum, loaded data,
+ * sweep) is cleared. The theme choice is kept. When the address held a model, the browser's
+ * Back button returns to it.
+ */
+let resetting = false;
+function resetAll(): void {
+  resetting = true;
+  const u = new URL(location.href);
+  const hadState = u.search !== "";
+  u.search = "";
+  u.hash = "#model";
+  if (hadState) location.assign(u.toString());
+  else {
+    history.replaceState(null, "", u.toString());
+    location.reload();
+  }
+}
+
 function boot(): void {
+  initTheme();
   const app = document.getElementById("app")!;
   const { state: fromUrl, error } = stateFromSearch(location.search);
   const store = new Store(fromUrl ?? defaultState());
@@ -54,7 +77,7 @@ function boot(): void {
       h("h1", {}, "Demographic history and the expected SFS"),
       h("span", { class: "badge", title: "Beta version: a work in progress. See the disclaimer on the About page." }, "Beta"),
     ),
-    nav,
+    h("div", { class: "header-right" }, nav, h("div", { class: "header-actions" }, resetButton(resetAll), themeButton())),
   );
 
   // ---- views
@@ -76,6 +99,7 @@ function boot(): void {
   );
   const skip = h("a", { class: "skip", href: "#view-model" }, "Skip to content");
   app.append(skip, header, ...Object.values(views), footer);
+  watchExternalLinks(app);
   if (error) app.insertBefore(h("p", { class: "notice", role: "alert" }, error), views.model);
 
   // ---- mount (lazy for the heavier tabs)
@@ -110,6 +134,7 @@ function boot(): void {
 
   // ---- keep the URL in step with the model (no new history entries)
   const writeUrl = debounce(() => {
+    if (resetting) return;
     const u = new URL(location.href);
     u.search = `?v=${URL_VERSION}&s=${encodeState(store.get())}`;
     history.replaceState(null, "", u.toString());

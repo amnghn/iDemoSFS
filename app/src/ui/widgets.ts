@@ -148,3 +148,21 @@ export function numberField(key: string, label: string, value: number, onChange:
   });
   return h("div", { class: "field" }, h("label", { for: id }, label, opts.info ? infoTip(opts.info) : null), inp);
 }
+
+const UPLOAD_ICON =
+  '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>';
+
+/**
+ * A file input shown as a clear button with the name of the chosen file. The native input stays
+ * in the page (visually hidden), so it keeps its keyboard focus and accessible name.
+ */
+export function fileButton(input: HTMLInputElement, text: string, primary = false): HTMLElement {
+  input.classList.add("visually-hidden");
+  const name = h("span", { class: "file-name" }, "No file chosen");
+  input.addEventListener("change", () => {
+    const f = input.files?.[0];
+    if (f) name.textContent = f.name;
+  });
+  return h("label", { class: "file-btn" }, h("span", { class: primary ? "btn primary" : "btn" }, h("span", { class: "icon", html: UPLOAD_ICON }), text), input, name);
+}
+

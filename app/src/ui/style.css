@@ -68,6 +68,38 @@
   }
 }
 
+/* The visitor chose the dark theme with the theme button. Keep these tokens identical to the
+   block above (a test in test/ui.test.ts checks this). */
+:root[data-theme="dark"] {
+  --surface: #1a1a19;
+  --card: #222220;
+  --surface-2: #2b2b28;
+  --ink: #ecebe6;
+  --ink-2: #c9c8c1;
+  --ink-3: #a3a29b;
+  --grid: #363631;
+  --axis: #75746d;
+  --border: #3b3b36;
+  --accent: #7cc4ef;
+  --accent-soft: #1f3442;
+  --focus: #7cc4ef;
+  --warn-bg: #3a2e14;
+  --warn-ink: #f2d39a;
+  --err-bg: #3d221a;
+  --err-ink: #f4b9a3;
+  --c-pop1: #2f86c4;
+  --c-pop2: #ba8000;
+  --c-anc: #009e73;
+  --c-pulse: #d55e00;
+  --c-obs: #d55e00;
+  --c-ghost: #8a8983;
+  --c-neutral: #ecebe6;
+  --c-div-neg: #2f86c4;
+  --c-div-pos: #d55e00;
+  --c-div-mid: #3d3d38;
+  color-scheme: dark;
+}
+
 *,
 *::before,
 *::after {
@@ -1050,3 +1082,77 @@ a.cite {
 .inline-plot {
   max-width: 640px;
 }
+
+/* ---------------------------------------------------------------- header buttons (theme, reset) */
+.header-right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+}
+.header-actions {
+  display: flex;
+  gap: 6px;
+}
+.btn.header-btn {
+  padding: 5px 10px;
+  color: var(--ink-2);
+}
+.btn.header-btn:hover {
+  color: var(--ink);
+}
+.icon {
+  display: inline-flex;
+  line-height: 0;
+}
+
+/* ---------------------------------------------------------------- upload */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+.file-btn {
+  position: relative;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.file-btn:focus-within .btn {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.file-name {
+  color: var(--ink-3);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+.upload-callout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin: 4px 0 16px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--ink-2);
+  font-size: 0.92rem;
+}
+.upload-callout span {
+  flex: 1 1 260px;
+}
+.card-foot {
+  margin: 10px 0 0;
+}
+

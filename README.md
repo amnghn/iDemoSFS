@@ -1,6 +1,6 @@
 # Demographic history and the expected SFS
 
-**An interactive teaching tool (beta, v0.1.0-beta).** Change a population's history (sizes, times, the type of size change, a split, migration, an admixture pulse) and see, at once, a drawing of the history, the expected site frequency spectrum (SFS, 1D and joint 2D, folded and unfolded) and the classic statistics computed from it. A Statistics tab also works as a calculator for your own SFS files. The app runs entirely in the browser: there is no server, and no data leave your computer.
+**An interactive teaching tool (beta, v0.2.0-beta).** Change a population's history (sizes, times, the type of size change, a split, migration, an admixture pulse) and see, at once, a drawing of the history, the expected site frequency spectrum (SFS, 1D and joint 2D, folded and unfolded) and the classic statistics computed from it. A Statistics tab also works as a calculator for your own SFS files. The app runs entirely in the browser: there is no server, and no data leave your computer.
 
 - **Live site:** <https://amnghn.github.io/iDemoSFS/>
 - **Repository:** <https://github.com/amnghn/iDemoSFS>
@@ -22,9 +22,10 @@
 - **Statistics tab:**
   - θ_W, θ_π, θ_H, θ_L, singleton estimators, Tajima's D, Fu and Li's D, F, D* and F*, Fay and Wu's H, Zeng's E, π₁, π₂, d_xy, d_a, Hudson's and Weir and Cockerham's F_ST, f₂, and shared, private and fixed sites;
   - plots of the estimator weights, 2D weight maps, F_ST teaching plots, a parameter sweep and short explanation cards.
-- **Calculator mode:** upload or paste a dadi/moments `.fs` file, easySFS output, ANGSD `realSFS` output or a plain matrix. For Weir and Cockerham's estimator, a VCF or genotype counts can be added. The app compares the data with the current model, with residuals as in dadi and moments.
+- **Calculator mode** (Statistics tab → **Upload your own SFS**): upload or paste a dadi/moments `.fs` file, easySFS output, ANGSD `realSFS` output or a plain matrix. For Weir and Cockerham's estimator, a VCF or genotype counts can be added. The app compares the data with the current model, with residuals as in dadi and moments.
 - **Exports:** the spectrum as CSV or `.fs`, the model as Demes YAML, and the figures as SVG or PNG. The current model is kept in the page address, so it can be shared as a link; `?preset=<id>` opens a preset.
 - **Learn tab:** teaching text with references, guided exercises and a glossary.
+- **Light and dark themes:** the page follows the system setting; the theme button in the header switches it (the choice is remembered in the browser). The **Reset** button clears all changes and starts again with the default model; changing tabs keeps the changes.
 
 ## Run it locally
 
@@ -76,7 +77,7 @@ The validation pipeline runs on an HPC cluster (SLURM). Its Python environment i
 
 ## How to cite
 
-> Ghane A (2026) Demographic history and the expected SFS: an interactive teaching tool. Version 0.1.0-beta. https://github.com/amnghn/iDemoSFS
+> Ghane A (2026) Demographic history and the expected SFS: an interactive teaching tool. Version 0.2.0-beta. https://github.com/amnghn/iDemoSFS
 
 See [`CITATION.cff`](CITATION.cff). Please also cite the methods the tool builds on, in particular moments (Jouganous et al. 2017, Genetics 206: 1549–1567, doi:10.1534/genetics.117.200493).
 

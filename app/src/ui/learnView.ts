@@ -4,6 +4,7 @@
  * live example of two different histories with almost the same expected SFS.
  */
 
+import { onThemeChange } from "./theme.ts";
 import { Store } from "./state.ts";
 import { Engine } from "../engine/client.ts";
 import { computeSFS } from "../engine/compute.ts";
@@ -59,11 +60,15 @@ export function mountLearnView(root: HTMLElement, store: Store, _engine: Engine,
     }),
   );
 
-  // figures
-  root.querySelectorAll<HTMLElement>("[data-figure]").forEach((el) => {
-    if (el.dataset.figure === "trees") drawTrees(el);
-    if (el.dataset.figure === "limits") drawLimits(el);
-  });
+  // figures (drawn again with the new colours when the theme changes)
+  const drawFigures = (): void =>
+    root.querySelectorAll<HTMLElement>("[data-figure]").forEach((el) => {
+      el.replaceChildren();
+      if (el.dataset.figure === "trees") drawTrees(el);
+      if (el.dataset.figure === "limits") drawLimits(el);
+    });
+  drawFigures();
+  onThemeChange(drawFigures);
 }
 
 /** Two schematic genealogies of 8 samples: star-like (growth) and long internal branches. */

@@ -226,6 +226,20 @@ describe("content and references", () => {
   it("the contact email is set (given by the author at STOP 3)", () => {
     expect(SITE.email).toEqual(["aminghane", "univie.ac.at"]);
   });
+  it("the About page names the developer", () => {
+    expect(DOCS.about.sections.find((s) => s.id === "about-author")!.title).toBe("Developer");
+  });
+  it("the dark theme has the same tokens with and without the theme button", () => {
+    const css = readFileSync(new URL("../src/ui/style.css", import.meta.url), "utf-8");
+    const block = (start: string): string => {
+      const i = css.indexOf("{", css.indexOf(start)) + 1;
+      return css.slice(i, css.indexOf("}", i)).split("\n").map((l) => l.trim()).filter(Boolean).join("\n");
+    };
+    const system = block(':root:not([data-theme="light"])');
+    const chosen = block(':root[data-theme="dark"]');
+    expect(system.length).toBeGreaterThan(200);
+    expect(chosen).toBe(system);
+  });
   it("the repository URL is set (given by the author at STOP 3)", () => {
     expect(SITE.repo).toBe("https://github.com/amnghn/iDemoSFS");
     expect(SITE.repoIsPlaceholder).toBe(false);

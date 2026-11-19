@@ -5,6 +5,7 @@
  * while a new spectrum is computed; a spinner appears after 200 ms.
  */
 
+import { onThemeChange } from "./theme.ts";
 import { Store, effectiveModel, theta as thetaOf } from "./state.ts";
 import { Engine, LiveRunner, SfsResult } from "../engine/client.ts";
 import { Model } from "../engine/model.ts";
@@ -81,7 +82,13 @@ export function mountModelView(root: HTMLElement, store: Store, engine: Engine):
           statusEl,
           tableBox,
         ),
-        h("section", { class: "card" }, h("header", { class: "card-head" }, h("h2", {}, "Summary statistics")), statsEl),
+        h(
+          "section",
+          { class: "card" },
+          h("header", { class: "card-head" }, h("h2", {}, "Summary statistics")),
+          statsEl,
+          h("p", { class: "hint card-foot" }, "More statistics and plots are in the ", h("a", { href: "#stats" }, "Statistics tab"), ". Have your own SFS? ", h("a", { href: "#stats-upload" }, "Upload it"), " to compare it with this model."),
+        ),
       ),
     ),
   );
@@ -283,6 +290,12 @@ export function mountModelView(root: HTMLElement, store: Store, engine: Engine):
     renderPlots();
   }) : null;
   ro?.observe(sfsMainEl);
+  // new colours after a theme change (a hidden tab is drawn again when it is shown)
+  onThemeChange(() => {
+    if (root.hidden) return;
+    renderDiagram();
+    renderPlots();
+  });
   void fmt;
 
   return {

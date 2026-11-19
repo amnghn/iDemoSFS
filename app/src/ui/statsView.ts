@@ -22,7 +22,8 @@ import { drawSfs1D } from "./plots/sfs1d.ts";
 import { drawHeatmap } from "./plots/sfs2d.ts";
 import { drawLines, tableLines, LineSeries } from "./plots/lines.ts";
 import { theme } from "./plots/common.ts";
-import { segmented, select, numberField, toggle } from "./widgets.ts";
+import { segmented, select, numberField, toggle, fileButton } from "./widgets.ts";
+import { onThemeChange } from "./theme.ts";
 import { DOCS } from "../generated/content.ts";
 import { h, fmt, fixed, pct, setChildren, infoTip } from "./dom.ts";
 
@@ -108,15 +109,24 @@ export function mountStatsView(root: HTMLElement, store: Store, engine: Engine, 
 
   const left = h("div", { class: "stack" });
   const right = h("div", { class: "stack" });
+  const uploadBtn = h("button", { type: "button", class: "btn primary", id: "stats-upload-btn" }, "Upload your own SFS");
   root.append(
     h("div", { class: "prose" }, h("h2", { style: "margin-top:0" }, "Statistics from the SFS"), h("div", { html: DOCS.stats?.intro ?? "" })),
+    h(
+      "div",
+      { class: "upload-callout" },
+      uploadBtn,
+      h("span", {}, "Calculator: upload or paste your own spectrum (dadi/moments .fs, easySFS, ANGSD realSFS or a plain matrix). The file is read in your browser and is not sent anywhere."),
+    ),
     h("div", { class: "stats-grid" }, left, right),
   );
 
   // left column cards
   const sourceBody = h("div");
   const wcBody = h("div");
-  left.append(card("Source of the spectrum", sourceBody), card("Weir & Cockerham: heterozygosity", wcBody), h("section", { class: "card box warn prose", id: "stats-cannot", html: `<h3>${docTitle("stats", "cannot")}</h3>${doc("stats", "cannot")}` }));
+  const sourceCard = card("Source of the spectrum", sourceBody);
+  sourceCard.id = "stats-upload";
+  left.append(sourceCard, card("Weir & Cockerham: heterozygosity", wcBody), h("section", { class: "card box warn prose", id: "stats-cannot", html: `<h3>${docTitle("stats", "cannot")}</h3>${doc("stats", "cannot")}` }));
 
   // right column cards
   const tableBody = h("div");
@@ -209,6 +219,7 @@ export function mountStatsView(root: HTMLElement, store: Store, engine: Engine, 
 
   // ---------------------------------------------------------------- source panel
   const fileInput = h("input", { type: "file", accept: ".fs,.sfs,.txt,.csv,.tsv,.ml,.obs", "aria-label": "Spectrum file" }) as HTMLInputElement;
+  const fileBtn = fileButton(fileInput, "Upload a spectrum file", true);
   const paste = h("textarea", { placeholder: "…or paste a spectrum here (dadi/moments .fs, easySFS output, ANGSD realSFS or a plain matrix)", "aria-label": "Spectrum text" }) as HTMLTextAreaElement;
   let fmtChoice: "auto" | "dadi" | "realsfs" | "matrix" = "auto";
   let npops: "1" | "2" = "2";
@@ -262,12 +273,13 @@ export function mountStatsView(root: HTMLElement, store: Store, engine: Engine, 
       return;
     }
     readData(await f.text(), f.name);
+    fileInput.value = ""; // the same file can be read again after an edit
   });
 
   function buildSource(): void {
     const s = store.get();
     const parts: (Node | null)[] = [
-      segmented("src", "Statistics of", [{ value: "model", label: "the current model" }, { value: "data", label: "my data (calculator)" }], ui.source, (v) => {
+      segmented("src", "Statistics of", [{ value: "model", label: "the current model" }, { value: "data", label: "my own data (upload)" }], ui.source, (v) => {
         ui.source = v;
         buildSource();
         buildWc();
@@ -285,7 +297,7 @@ export function mountStatsView(root: HTMLElement, store: Store, engine: Engine, 
       );
     } else {
       parts.push(
-        h("div", { class: "file-row" }, fileInput),
+        h("div", { class: "file-row" }, fileBtn),
         paste,
         h("div", { class: "file-row" }, h("button", { type: "button", class: "btn primary", onclick: () => paste.value.trim() && readData(paste.value, "pasted spectrum") }, "Read the pasted text")),
         select(
@@ -470,12 +482,12 @@ export function mountStatsView(root: HTMLElement, store: Store, engine: Engine, 
       {},
       h("p", { class: "hint" }, "The exact option uses genotypes, not the SFS alone. Give one of:"),
       h("p", {}, h("strong", {}, "A VCF"), " (at most 50 MB; .vcf or .vcf.gz; read in your browser only) and a population map:"),
-      vcfIn,
+      h("div", { class: "file-row" }, fileButton(vcfIn, "VCF file")),
       popmapIn,
       h("p", {}, h("strong", {}, "A genotype count table"), ": one line per site with hom-ref, het and hom-alt counts for pop 1, then for pop 2 (6 numbers)."),
-      tableIn,
+      h("div", { class: "file-row" }, fileButton(tableIn, "Genotype table")),
       h("p", {}, h("strong", {}, "Two vcftools --hardy files"), " (one per population, made with --keep):"),
-      h("div", { class: "file-row" }, hwe1, hwe2),
+      h("div", { class: "file-row" }, fileButton(hwe1, "Pop 1 file"), fileButton(hwe2, "Pop 2 file")),
       out,
     );
   }
@@ -1098,6 +1110,28 @@ export function mountStatsView(root: HTMLElement, store: Store, engine: Engine, 
       buildWc();
       buildSource();
     }
+    if (!root.hidden) refresh();
+  });
+  // "Upload your own SFS": switch to the calculator and open the file picker
+  const useData = (): void => {
+    if (ui.source === "data") return;
+    ui.source = "data";
+    buildSource();
+    buildWc();
+    refresh();
+  };
+  uploadBtn.addEventListener("click", () => {
+    useData();
+    sourceCard.scrollIntoView({ block: "start" });
+    fileInput.click();
+  });
+  // links to #stats-upload (for example from the Model tab) open the calculator
+  const fromHash = (): void => {
+    if (location.hash === "#stats-upload") useData();
+  };
+  window.addEventListener("hashchange", fromHash);
+  fromHash();
+  onThemeChange(() => {
     if (!root.hidden) refresh();
   });
   // refresh when the tab becomes visible

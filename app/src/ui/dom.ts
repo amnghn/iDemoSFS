@@ -83,3 +83,44 @@ export function debounce<A extends unknown[]>(fn: (...a: A) => void, ms: number)
 export function infoTip(text: string): HTMLElement {
   return h("span", { class: "info", tabindex: 0, role: "note", "aria-label": text, title: text }, "i");
 }
+
+/**
+ * Links to other sites (references, DOIs, GitHub files and Issues, related tools) open in a new
+ * tab, so that the app stays open. Links inside the app (#model, #stats, …), mailto: and
+ * downloads (blob:) are left as they are. A screen reader hears "opens in a new tab" through
+ * aria-describedby (one hidden note in the page).
+ */
+export const NEW_TAB_NOTE_ID = "new-tab-note";
+
+export function markExternalLink(a: HTMLAnchorElement): void {
+  const href = a.getAttribute("href") ?? "";
+  if (!/^https?:\/\//i.test(href)) return;
+  try {
+    if (new URL(href).origin === location.origin) return;
+  } catch {
+    return;
+  }
+  a.target = "_blank";
+  const rel = new Set((a.getAttribute("rel") ?? "").split(/\s+/).filter(Boolean));
+  rel.add("noopener");
+  rel.add("noreferrer");
+  a.setAttribute("rel", [...rel].join(" "));
+  if (!a.hasAttribute("aria-describedby")) a.setAttribute("aria-describedby", NEW_TAB_NOTE_ID);
+}
+
+/** Mark the links already in `root`, and every link added to it later. */
+export function watchExternalLinks(root: HTMLElement): void {
+  if (!document.getElementById(NEW_TAB_NOTE_ID)) document.body.append(h("span", { id: NEW_TAB_NOTE_ID, hidden: true }, "opens in a new tab"));
+  const scan = (n: Node): void => {
+    if (!(n instanceof Element)) return;
+    if (n instanceof HTMLAnchorElement) markExternalLink(n);
+    n.querySelectorAll<HTMLAnchorElement>("a[href]").forEach(markExternalLink);
+  };
+  scan(root);
+  new MutationObserver((records) => {
+    for (const r of records) {
+      if (r.type === "attributes" && r.target instanceof HTMLAnchorElement) markExternalLink(r.target);
+      r.addedNodes.forEach(scan);
+    }
+  }).observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ["href"] });
+}

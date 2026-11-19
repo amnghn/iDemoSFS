@@ -10,6 +10,7 @@
  *   node scripts/browser_check.mjs --url http://127.0.0.1:4173/ --out <dir> --profile <tmpdir>
  *        [--width 1440] [--height 1000] [--bench] [--only model,stats,learn,about] [--dark]
  *        [--url-query "?v=1&s=..."] [--calc <spectrum file to paste into the calculator>] [--sweep]
+ *        [--extras --files <dir>]   (theme button, tabs keep the model, new-tab links, uploads, Reset)
  */
 
 import { spawn } from "node:child_process";
@@ -105,7 +106,7 @@ try {
   await send("browsingContext.setViewport", { context: ctx, viewport: { width: W, height: H } });
   const query = args["url-query"] ?? "";
   const tabs = (args.only ?? "model,stats,learn,about").split(",");
-  if (!args.bench || args.only) {
+  if ((!args.bench && !args.extras) || args.only) {
     await send("browsingContext.navigate", { context: ctx, url: `${BASE}${query}#model`, wait: "complete" });
     for (const tab of tabs) {
       await evaluate(ctx, `location.hash = "#${tab}"; true`);
@@ -151,6 +152,99 @@ try {
     report.steps.push({ tab: "sweep", readyMs: ms, status });
     await evaluate(ctx, `document.querySelector("#sweep-plots").scrollIntoView(); true`);
     await shot(ctx, `sweep_${W}`);
+  }
+  if (args.extras) {
+    // theme button, tabs keep the model, links to other sites, upload (real files through
+    // input.setFiles, as if chosen in the file picker), and Reset. --files <dir> holds
+    // dadi_2d_unfolded.fs, calc_fixture_400sites.vcf.gz and calc_fixture_popmap.txt.
+    const { readFileSync } = await import("node:fs");
+    const { resolve } = await import("node:path");
+    const FILES = resolve(args.files ?? ".");
+    const ex = {};
+    const modelReady = `document.querySelector("#sfs-main svg") && document.querySelector(".spinner").hidden`;
+    const nodeId = async (expr) => {
+      const r = await send("script.evaluate", { expression: expr, target: { context: ctx }, awaitPromise: false, resultOwnership: "root" });
+      if (!r.result?.sharedId) throw new Error(`no element for ${expr}`);
+      return r.result.sharedId;
+    };
+    const setFile = async (expr, file) => send("input.setFiles", { context: ctx, element: { sharedId: await nodeId(expr) }, files: [join(FILES, file)] });
+    const themeInfo = `JSON.stringify({ attr: document.documentElement.dataset.theme ?? null, bg: getComputedStyle(document.body).backgroundColor, label: document.querySelector("#theme-toggle").getAttribute("aria-label"), axis: getComputedStyle(document.querySelector("#sfs-main svg text") ?? document.body).fill })`;
+
+    await send("browsingContext.navigate", { context: ctx, url: `${BASE}?preset=im_sym#model`, wait: "complete" });
+    await evaluate(ctx, waitFor(modelReady));
+    // 1. theme button, and the choice is kept after a reload
+    ex.themeBefore = JSON.parse(await evaluate(ctx, themeInfo));
+    await evaluate(ctx, `document.querySelector("#theme-toggle").click(); true`);
+    await sleep(500);
+    ex.themeAfter = JSON.parse(await evaluate(ctx, themeInfo));
+    await shot(ctx, `extras_model_theme_${ex.themeAfter.attr}_${W}`);
+    await send("browsingContext.reload", { context: ctx, wait: "complete" });
+    await evaluate(ctx, waitFor(modelReady));
+    ex.themeAfterReload = JSON.parse(await evaluate(ctx, themeInfo));
+    for (const tab of ["stats", "learn"]) {
+      await evaluate(ctx, `location.hash = "#${tab}"; true`);
+      await sleep(800);
+      await shot(ctx, `extras_${tab}_theme_${ex.themeAfter.attr}_${W}`);
+    }
+    await evaluate(ctx, `location.hash = "#model"; true`);
+    await sleep(300);
+    await evaluate(ctx, `document.querySelector("#theme-toggle").click(); true`);
+    await sleep(300);
+    ex.themeBack = JSON.parse(await evaluate(ctx, themeInfo));
+    // 2. the model stays the same when the tabs change
+    const modelInfo = `JSON.stringify({ search: location.search, preset: document.querySelector('[data-key="preset"]').value, what: document.querySelector(".what-text").textContent.slice(0, 60) })`;
+    const m0 = JSON.parse(await evaluate(ctx, modelInfo));
+    for (const tab of ["stats", "learn", "about", "model"]) {
+      await evaluate(ctx, `location.hash = "#${tab}"; true`);
+      await sleep(400);
+    }
+    await evaluate(ctx, waitFor(modelReady));
+    const m1 = JSON.parse(await evaluate(ctx, modelInfo));
+    ex.tabsKeepModel = { before: m0, after: m1, same: JSON.stringify(m0) === JSON.stringify(m1) };
+    // 3. links to other sites open in a new tab (About and Learn)
+    const linkInfo = (sel) => `JSON.stringify((() => { const a = [...document.querySelectorAll("${sel} a[href]")]; const ext = a.filter((x) => /^https?:/.test(x.getAttribute("href"))); return { links: a.length, external: ext.length, newTab: ext.filter((x) => x.target === "_blank" && /noopener/.test(x.rel)).length, internalNewTab: a.filter((x) => !/^https?:/.test(x.getAttribute("href")) && x.target === "_blank").length }; })())`;
+    await evaluate(ctx, `location.hash = "#about"; true`);
+    await evaluate(ctx, waitFor(`document.querySelector("#about-disclaimer")`));
+    ex.linksAbout = JSON.parse(await evaluate(ctx, linkInfo("#view-about")));
+    ex.developerHeading = await evaluate(ctx, `document.querySelector("#about-author h2")?.textContent ?? ""`);
+    await evaluate(ctx, `location.hash = "#learn"; true`);
+    await evaluate(ctx, waitFor(`document.querySelector("#view-learn [data-figure=limits] svg")`));
+    ex.linksLearn = JSON.parse(await evaluate(ctx, linkInfo("#view-learn")));
+    // 4. upload: the link in the Model tab opens the calculator; a spectrum file and a VCF.gz
+    await evaluate(ctx, `location.hash = "#model"; true`);
+    await sleep(300);
+    await evaluate(ctx, `document.querySelector('#view-model a[href="#stats-upload"]').click(); true`);
+    ex.uploadLinkMs = await evaluate(ctx, waitFor(`!document.querySelector("#view-stats").hidden && document.querySelector("#stats-upload .file-btn")`));
+    await setFile(`document.querySelector('#stats-upload input[type=file]')`, "dadi_2d_unfolded.fs");
+    ex.spectrumUploadMs = await evaluate(ctx, waitFor(`/dadi_2d_unfolded\\.fs/.test(document.querySelector("#stats-upload").textContent) && /2D/.test(document.querySelector("#stats-upload").textContent)`));
+    ex.spectrumUploadText = (await evaluate(ctx, `document.querySelector("#stats-upload .hint[aria-live]")?.textContent ?? ""`)).slice(0, 160);
+    await evaluate(ctx, `(() => { const s = document.querySelector('[data-key="wc-data"]'); s.value = "exact"; s.dispatchEvent(new Event("change")); return true; })()`);
+    await sleep(300);
+    await evaluate(ctx, `(() => { const t = document.querySelector('textarea[aria-label="Population map"]'); t.value = ${JSON.stringify(readFileSync(join(FILES, "calc_fixture_popmap.txt"), "utf-8"))}; return true; })()`);
+    await setFile(`document.querySelector('input[type=file][aria-label="VCF file"]')`, "calc_fixture_400sites.vcf.gz");
+    ex.vcfUploadMs = await evaluate(ctx, waitFor(`[...document.querySelectorAll("#view-stats [aria-live]")].some((e) => /VCF \\(/.test(e.textContent))`));
+    ex.vcfUploadText = await evaluate(ctx, `[...document.querySelectorAll("#view-stats [aria-live]")].map((e) => e.textContent).find((t) => /VCF \\(/.test(t)) ?? ""`);
+    await evaluate(ctx, `document.querySelector("#stats-upload").scrollIntoView(); true`);
+    await shot(ctx, `extras_upload_${W}`);
+    // the "Upload your own SFS" button switches back to the calculator from model mode
+    await evaluate(ctx, `(() => { const r = document.querySelector('#stats-upload input[type=radio][value=model]'); r.checked = true; r.dispatchEvent(new Event("change")); return true; })()`);
+    await sleep(300);
+    ex.uploadButtonFromModelMode = await evaluate(ctx, `(() => { const had = Boolean(document.querySelector("#stats-upload .file-btn")); document.querySelector("#stats-upload-btn").click(); return { hadFileButtonBefore: had, hasFileButtonAfter: Boolean(document.querySelector("#stats-upload .file-btn")) }; })()`);
+    // 5. Reset: back to the default model on the Model tab, theme choice kept
+    await evaluate(ctx, `document.querySelector("#theme-toggle").click(); true`);
+    ex.themeBeforeReset = await evaluate(ctx, `document.documentElement.dataset.theme ?? null`);
+    await evaluate(ctx, `setTimeout(() => document.querySelector("#reset-all").click(), 50); true`);
+    await sleep(2500);
+    await evaluate(ctx, waitFor(modelReady));
+    ex.afterReset = JSON.parse(await evaluate(ctx, `JSON.stringify({ search: location.search, hash: location.hash, preset: document.querySelector('[data-key="preset"]').value, theme: document.documentElement.dataset.theme ?? null, statsCalculator: false })`));
+    await evaluate(ctx, `location.hash = "#stats"; true`);
+    await evaluate(ctx, waitFor(`document.querySelector("#view-stats .stats-table")`));
+    ex.afterReset.statsCalculator = await evaluate(ctx, `Boolean(document.querySelector("#stats-upload .file-btn"))`);
+    await evaluate(ctx, `location.hash = "#model"; true`);
+    await sleep(300);
+    await shot(ctx, `extras_after_reset_${W}`);
+    report.extras = ex;
+    report.steps.push({ tab: "extras", ...ex });
   }
   if (args.bench) {
     await send("browsingContext.navigate", { context: ctx, url: `${BASE}bench.html`, wait: "complete" });

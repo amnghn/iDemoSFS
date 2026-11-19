@@ -3,7 +3,7 @@ Text of the "Statistics" tab. Licence: CC BY 4.0. Cite only keys of docs/REFEREN
 Section ids are used by src/ui/statsView.ts; ids that start with "card-" become statistic cards.
 -->
 
-Most classic diversity and divergence statistics are **linear functions of the SFS**: each one gives a weight to each frequency bin and adds up the weighted counts [@achaz2009frequency]. This tab computes them from the expected SFS of the current model (model mode) or from your own spectrum (calculator mode), and shows the weights. Your files are read in your browser only; nothing is uploaded.
+Most classic diversity and divergence statistics are **linear functions of the SFS**: each one gives a weight to each frequency bin and adds up the weighted counts [@achaz2009frequency]. This tab computes them from the expected SFS of the current model (model mode) or from your own spectrum (calculator mode), and shows the weights. Your files are read in your browser only; nothing is sent to a server.
 
 ## Estimator weights {#weights}
 
