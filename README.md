@@ -1,6 +1,6 @@
 # Demographic history and the expected SFS
 
-**An interactive teaching tool (beta, v0.2.0-beta).** Change a population's history (sizes, times, the type of size change, a split, migration, an admixture pulse) and see, at once, a drawing of the history, the expected site frequency spectrum (SFS, 1D and joint 2D, folded and unfolded) and the classic statistics computed from it. A Statistics tab also works as a calculator for your own SFS files. The app runs entirely in the browser: there is no server, and no data leave your computer.
+**An interactive teaching tool (beta, v0.2.1-beta).** Change a population's history (sizes, times, the type of size change, a split, migration, an admixture pulse) and see, at once, a drawing of the history, the expected site frequency spectrum (SFS, 1D and joint 2D, folded and unfolded) and the classic statistics computed from it. A Statistics tab also works as a calculator for your own SFS files. The app runs entirely in the browser: there is no server, and no data leave your computer.
 
 - **Live site:** <https://amnghn.github.io/iDemoSFS/>
 - **Repository:** <https://github.com/amnghn/iDemoSFS>
@@ -77,7 +77,7 @@ The validation pipeline runs on an HPC cluster (SLURM). Its Python environment i
 
 ## How to cite
 
-> Ghane A (2026) Demographic history and the expected SFS: an interactive teaching tool. Version 0.2.0-beta. https://github.com/amnghn/iDemoSFS
+> Ghane A (2026) Demographic history and the expected SFS: an interactive teaching tool. Version 0.2.1-beta. https://github.com/amnghn/iDemoSFS
 
 See [`CITATION.cff`](CITATION.cff). Please also cite the methods the tool builds on, in particular moments (Jouganous et al. 2017, Genetics 206: 1549–1567, doi:10.1534/genetics.117.200493).
 

@@ -226,6 +226,14 @@ describe("content and references", () => {
   it("the contact email is set (given by the author at STOP 3)", () => {
     expect(SITE.email).toEqual(["aminghane", "univie.ac.at"]);
   });
+  it("search engines: the page title names iDemoSFS, one canonical address, and a sitemap", () => {
+    const html = readFileSync(new URL("../index.html", import.meta.url), "utf-8");
+    expect(html).toMatch(/<title>iDemoSFS: an interactive tool for demographic history and the expected SFS<\/title>/);
+    expect(html).toMatch(/<link rel="canonical" href="https:\/\/amnghn\.github\.io\/iDemoSFS\/" \/>/);
+    const sitemap = readFileSync(new URL("../public/sitemap.xml", import.meta.url), "utf-8");
+    expect(sitemap).toMatch(/<loc>https:\/\/amnghn\.github\.io\/iDemoSFS\/<\/loc>/);
+    expect(readFileSync(new URL("../bench.html", import.meta.url), "utf-8")).toMatch(/name="robots" content="noindex"/);
+  });
   it("the About page names the developer", () => {
     expect(DOCS.about.sections.find((s) => s.id === "about-author")!.title).toBe("Developer");
   });

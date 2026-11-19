@@ -31,7 +31,7 @@ describe("page", () => {
     expect(document.querySelector(".what-text")!.textContent).toMatch(/Migration keeps alleles shared/);
     expect((document.querySelector('[data-key="preset"]') as HTMLSelectElement).value).toBe("im_sym");
     expect(document.querySelector(".badge")!.textContent).toBe("Beta");
-    expect(document.querySelector(".site-footer")!.textContent).toMatch(/v0\.2\.0-beta/);
+    expect(document.querySelector(".site-footer")!.textContent).toMatch(/v0\.2\.1-beta/);
   });
 
   it("switching to one population redraws a 1D spectrum", async () => {

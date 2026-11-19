@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="An interactive teaching tool: how demographic history (size changes, splits, migration, admixture) shapes the expected site frequency spectrum (SFS), with SFS-based statistics and a calculator for observed spectra." />
+    <meta name="description" content="iDemoSFS is an interactive teaching tool: how demographic history (size changes, splits, migration, admixture) shapes the expected site frequency spectrum (SFS), with SFS-based statistics and a calculator for observed spectra." />
+    <!-- one address for search engines: links that carry a model (?v=1&s=...) are the same page -->
+    <link rel="canonical" href="https://amnghn.github.io/iDemoSFS/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="iDemoSFS: an interactive tool for demographic history and the expected SFS" />
+    <meta property="og:description" content="See how population size changes, splits, migration and admixture shape the expected site frequency spectrum (SFS), with SFS-based statistics and a calculator for your own spectra. Runs in the browser." />
+    <meta property="og:url" content="https://amnghn.github.io/iDemoSFS/" />
     <meta name="color-scheme" content="light dark" />
     <script>
       // apply the visitor's stored theme before the first paint (see src/ui/theme.ts)
@@ -12,7 +18,7 @@
         if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
       } catch (e) {}
     </script>
-    <title>Demographic history and the expected SFS</title>
+    <title>iDemoSFS: an interactive tool for demographic history and the expected SFS</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230072B2'/%3E%3Crect x='6' y='8' width='4' height='18' rx='1' fill='white'/%3E%3Crect x='12' y='15' width='4' height='11' rx='1' fill='white'/%3E%3Crect x='18' y='19' width='4' height='7' rx='1' fill='white'/%3E%3Crect x='24' y='21' width='3' height='5' rx='1' fill='white'/%3E%3C/svg%3E" />
   </head>
   <body>

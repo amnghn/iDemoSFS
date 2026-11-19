@@ -1,6 +1,6 @@
 {
   "name": "demohis-expsfs",
-  "version": "0.2.0-beta",
+  "version": "0.2.1-beta",
   "description": "Interactive teaching app: demographic history and the expected site frequency spectrum (SFS)",
   "private": true,
   "type": "module",

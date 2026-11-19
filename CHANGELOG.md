@@ -4,6 +4,19 @@ All notable changes to this project are recorded in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html) with a `-beta` suffix.
 Every entry has an ISO 8601 timestamp in Vienna time (`TZ=Europe/Vienna date -Iminutes`).
 
+## [0.2.1-beta] – 2026-11-19
+
+### 2026-11-19T14:55+01:00 | Search engines: the name iDemoSFS in the page title, sitemap
+
+#### Changed
+- The page title is now "iDemoSFS: an interactive tool for demographic history and the expected SFS", and the page description starts with the name, so a search for "iDemoSFS" can find the site.
+
+#### Added
+- A canonical address (`https://amnghn.github.io/iDemoSFS/`), so that shared links that carry a model are counted as the same page, and link-preview tags (Open Graph: title, description, address).
+- `app/public/sitemap.xml` (served at `https://amnghn.github.io/iDemoSFS/sitemap.xml`), for Google Search Console.
+- The engine-timing page `bench.html` asks search engines not to index it.
+- Version 0.2.1-beta. Vitest: 106 of 106 pass (new test: title, canonical address, sitemap).
+
 ## [0.2.0-beta] – 2026-11-19
 
 ### 2026-11-19T12:32+01:00 | Requests after the first deployment: upload, theme button, new-tab links, Developer, Reset

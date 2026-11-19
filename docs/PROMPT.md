@@ -496,3 +496,9 @@ Amin pushed the repository and set GitHub Pages to GitHub Actions; the site is a
 4. **About page:** write "Developer" instead of "Who made it".
 5. **Reset button:** it clears all changes and goes back to the main page with the default parameters. Changing tabs must keep the changes.
 
+### 2026-11-19 (search engines)
+
+1. **Page title:** put "iDemoSFS" in the page title, for example "iDemoSFS: an interactive tool for demographic history and the expected SFS", so that a search for "iDemoSFS" finds the site.
+2. **GitHub topics:** add topics such as population-genetics, site-frequency-spectrum and demographic-inference (Amin does this on GitHub).
+3. **Google Search Console:** register the site so that Google indexes it sooner (Amin does this with his Google account).
+
