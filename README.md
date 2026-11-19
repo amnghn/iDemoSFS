@@ -77,7 +77,7 @@ The validation pipeline runs on an HPC cluster (SLURM). Its Python environment i
 
 ## How to cite
 
-> Ghane A (2026) Demographic history and the expected SFS: an interactive teaching tool. Version 0.2.1-beta. https://github.com/amnghn/iDemoSFS
+> Ghane A (2026) iDemoSFS: an interactive tool for demographic history and the expected SFS. Version 0.2.1-beta. https://github.com/amnghn/iDemoSFS
 
 See [`CITATION.cff`](CITATION.cff). Please also cite the methods the tool builds on, in particular moments (Jouganous et al. 2017, Genetics 206: 1549–1567, doi:10.1534/genetics.117.200493).
 

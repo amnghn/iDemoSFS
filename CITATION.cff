@@ -1,7 +1,7 @@
 # Citation metadata (https://citation-file-format.github.io/).
 cff-version: 1.2.0
 message: "If you use this tool, please cite it as below, and cite the methods it builds on (in particular moments)."
-title: "Demographic history and the expected SFS: an interactive teaching tool"
+title: "iDemoSFS: an interactive tool for demographic history and the expected SFS"
 version: 0.2.1-beta
 type: software
 authors:

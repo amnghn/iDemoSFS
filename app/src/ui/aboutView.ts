@@ -17,7 +17,7 @@ export function citationText(): string {
   const year = BUILD.lastChange.slice(0, 4);
   const parts = SITE.author.split(" ");
   const short = `${parts.slice(1).join(" ")} ${parts[0][0]}`; // "Ghane A"
-  return `${short} (${year}) ${SITE.title}: an interactive teaching tool. Version ${BUILD.version}. ${SITE.repo}`;
+  return `${short} (${year}) ${SITE.fullTitle}. Version ${BUILD.version}. ${SITE.repo}`;
 }
 
 export function mountAboutView(root: HTMLElement): void {

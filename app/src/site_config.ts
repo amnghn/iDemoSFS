@@ -17,6 +17,8 @@ export const SITE = {
   /** Short name of the tool (header, page title, exports). */
   name: "iDemoSFS",
   title: "Demographic history and the expected SFS",
+  /** Full title: page title and citation (decision of the author, 2026-11-19). */
+  fullTitle: "iDemoSFS: an interactive tool for demographic history and the expected SFS",
 };
 
 export const repoFile = (path: string): string => `${SITE.repo}/blob/${SITE.branch}/${path}`;

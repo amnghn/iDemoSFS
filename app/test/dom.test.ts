@@ -87,6 +87,7 @@ describe("page", () => {
     for (const a of all.filter((x) => /^#|^mailto:/.test(x.getAttribute("href")!))) expect(a.target).toBe("");
     expect(document.getElementById("new-tab-note")!.textContent).toBe("opens in a new tab");
     expect(document.querySelector("#about-author h2")!.textContent).toBe("Developer");
+    expect(document.querySelector("#about-cite blockquote")!.textContent).toMatch(/^Ghane A \(\d{4}\) iDemoSFS: an interactive tool for demographic history and the expected SFS\. Version \d+\.\d+\.\d+-beta\. https:\/\/github\.com\/amnghn\/iDemoSFS$/);
   });
 
   it("the theme button switches between light and dark and remembers the choice", () => {

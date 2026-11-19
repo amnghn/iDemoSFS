@@ -235,6 +235,13 @@ describe("content and references", () => {
     expect(sitemap).toMatch(/<loc>https:\/\/amnghn\.github\.io\/iDemoSFS\/<\/loc>/);
     expect(readFileSync(new URL("../bench.html", import.meta.url), "utf-8")).toMatch(/name="robots" content="noindex"/);
   });
+  it("the citation names iDemoSFS, with the same title as the page", () => {
+    expect(SITE.fullTitle).toBe("iDemoSFS: an interactive tool for demographic history and the expected SFS");
+    const html = readFileSync(new URL("../index.html", import.meta.url), "utf-8");
+    expect(html).toContain(`<title>${SITE.fullTitle}</title>`);
+    const cff = readFileSync(new URL("../../CITATION.cff", import.meta.url), "utf-8");
+    expect(cff).toContain(`title: "${SITE.fullTitle}"`);
+  });
   it("the About page names the developer", () => {
     expect(DOCS.about.sections.find((s) => s.id === "about-author")!.title).toBe("Developer");
   });

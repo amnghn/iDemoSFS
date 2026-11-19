@@ -27,6 +27,12 @@ Every entry has an ISO 8601 timestamp in Vienna time (`TZ=Europe/Vienna date -Im
 - The Google Search Console ownership tag (`google-site-verification`) in `app/index.html`.
 - Tests: the header name and the ownership tag (106 of 106 pass). Headless Firefox: no console errors and no horizontal scrolling at 1440, 1100 and 400 px.
 
+### 2026-11-19T15:17+01:00 | The name iDemoSFS in the citation
+
+#### Changed
+- The citation title is now the page title, "iDemoSFS: an interactive tool for demographic history and the expected SFS" (About page, README, `CITATION.cff`, and the credit example in `LICENSE-CONTENT.md`).
+- Tests: the citation, the page title and `CITATION.cff` have the same title (107 of 107 pass).
+
 ## [0.2.0-beta] – 2026-11-19
 
 ### 2026-11-19T12:32+01:00 | Requests after the first deployment: upload, theme button, new-tab links, Developer, Reset
