@@ -477,3 +477,9 @@ DOIs marked † were checked when this prompt was written. Verify all others bef
    - The WC F_IS caveat is shown in the app.
 2. **Reference screenshots** stay out of the public repository (`docs/reference_screenshot/` is gitignored).
 3. **Go for Phase 2.**
+
+### 2026-11-19 (answers at STOP 3)
+
+1. **Contact email:** Amin's academic address, aminghane [at] univie.ac.at. Show it on the About page (built at run time) and in the README.
+2. **`existing_tools.md`** (Amin's survey of related tools) stays in the project folder but is not public: add it to `.gitignore`.
+3. **GitHub repository URL:** Amin will give it later. Keep the repository placeholders until then, and remind Amin.

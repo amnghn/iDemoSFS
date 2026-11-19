@@ -58,7 +58,13 @@ describe("page", () => {
     location.hash = "#about";
     window.dispatchEvent(new HashChangeEvent("hashchange"));
     await until(() => Boolean(document.querySelector("#about-disclaimer")));
-    expect(document.querySelector("#view-about")!.textContent).toMatch(/\[EMAIL_PLACEHOLDER\]/);
+    const about = document.querySelector("#view-about")!;
+    expect(about.textContent).not.toMatch(/EMAIL_PLACEHOLDER/);
+    const mail = [...about.querySelectorAll("a")].find((a) => a.textContent === "aminghane [at] univie.ac.at")!;
+    expect(mail).toBeDefined();
+    expect(mail.getAttribute("href")).toBe("#");
+    mail.dispatchEvent(new Event("focus"));
+    expect(mail.getAttribute("href")).toBe("mailto:aminghane@univie.ac.at");
     expect(document.querySelector("#about-ai")!.textContent).toMatch(/Claude Code/);
   });
 });

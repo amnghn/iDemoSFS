@@ -37,3 +37,6 @@ PROMPT_Interactive_DemoHis_expSFS.md
 validation/output/
 docs/reference_screenshot/
 app/src/generated/
+
+# Amin's tool survey: kept in the project folder, not public (decision 2026-11-19)
+existing_tools.md

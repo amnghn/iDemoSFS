@@ -106,4 +106,4 @@ tools/                reference and link checks
 
 ## Contact and feedback
 
-Author: Amin Ghane, PhD student in Ecology and Evolution, Department of Botany and Biodiversity Research, University of Vienna. Contact: `[EMAIL_PLACEHOLDER]`. Ideas, suggestions and bug reports are very welcome, by email or through the GitHub Issues of this repository.
+Author: Amin Ghane, PhD student in Ecology and Evolution, Department of Botany and Biodiversity Research, University of Vienna. Contact: aminghane [at] univie.ac.at. Ideas, suggestions and bug reports are very welcome, by email or through the GitHub Issues of this repository.

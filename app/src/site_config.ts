@@ -1,13 +1,13 @@
 /**
- * Site settings that are not known yet. Placeholders until STOP 3 (decision of the author):
- * the contact email and the GitHub repository URL. Do not guess them.
+ * Site settings given by the author. The contact email was given at STOP 3 (2026-11-19).
+ * The GitHub repository URL is still a placeholder until the author gives it. Do not guess it.
  */
 
 export const SITE = {
   author: "Amin Ghane",
   affiliation: "Department of Botany and Biodiversity Research, University of Vienna",
-  /** Contact email as [user, domain]; null shows the placeholder. Set only after the author gives it. */
-  email: null as null | [string, string],
+  /** Contact email as [user, domain] (given by the author, 2026-11-19); built into an address at run time only. */
+  email: ["aminghane", "univie.ac.at"] as null | [string, string],
   /** GitHub repository URL (placeholder until the author gives it). */
   repo: "https://github.com/REPO_OWNER/REPO_NAME",
   repoIsPlaceholder: true,

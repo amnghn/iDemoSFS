@@ -238,3 +238,15 @@ Every entry has an ISO 8601 timestamp in Vienna time (`TZ=Europe/Vienna date -Im
 - Vitest: 97 of 97 pass. Typecheck and build pass (main bundle 524 kB, 113 kB gzipped, plus a 34 kB chunk shared with bench.html, and the KaTeX fonts).
 - Placeholders to fill after STOP 3: the contact email (`app/src/site_config.ts`, README) and the repository URL (`site_config.ts`, README, CITATION.cff).
 - Local commit at STOP 3. Nothing was pushed.
+
+### 2026-11-19T09:27+01:00 | STOP 3, part 1: contact email
+
+#### Changed
+- The contact email is set (`app/src/site_config.ts`, README). The About page builds the address at run time and shows it as "aminghane [at] univie.ac.at", with a `mailto:` link that is set only on focus, hover or click. The built site contains no complete address.
+- Tests: the About test now checks the contact link instead of the placeholder (98 of 98 pass).
+- `docs/PROMPT.md`: the answers at STOP 3 are recorded under "Follow-up instructions" (the original part is unchanged, checked with `cmp`).
+
+#### Notes
+- The repository URL is still a placeholder (`site_config.ts`, README, CITATION.cff); the author will give it later.
+- Local commit. Nothing was pushed.
+

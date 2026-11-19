@@ -13,6 +13,7 @@ import { validateModel } from "../src/engine/model.ts";
 import { LIMITS, modelWarnings } from "../src/engine/limits.ts";
 import { modelStats } from "../src/ui/modelStats.ts";
 import { explain, summarise } from "../src/ui/whatChanged.ts";
+import { SITE } from "../src/site_config.ts";
 import { mafFilterJoint, projectJoint, polyBins, foldJoint } from "../src/stats/sfsutil.ts";
 import { twoPopStats } from "../src/stats/twopop.ts";
 import { sfsCsv, sfsFs } from "../src/ui/exports.ts";
@@ -217,8 +218,13 @@ describe("content and references", () => {
     for (const id of ["about-disclaimer", "about-ai", "about-cite", "about-contact", "about-licence", "about-version"]) expect(DOCS.about.sections.some((s) => s.id === id), id).toBe(true);
     expect(JSON.stringify(DOCS)).not.toMatch(/\[@/);
   });
-  it("the email placeholder is kept until the author gives the address", () => {
-    expect(DOCS.about.sections.find((s) => s.id === "about-contact")!.html).toMatch(/\{\{EMAIL\}\}/);
+  it("the About text has an {{EMAIL}} slot, and no address is written in the text", () => {
+    const html = DOCS.about.sections.find((s) => s.id === "about-contact")!.html;
+    expect(html).toMatch(/\{\{EMAIL\}\}/);
+    expect(JSON.stringify(DOCS)).not.toMatch(/@univie/);
+  });
+  it("the contact email is set (given by the author at STOP 3)", () => {
+    expect(SITE.email).toEqual(["aminghane", "univie.ac.at"]);
   });
   it("related tools: only links that were checked", () => {
     expect(RELATED_TOOLS.length).toBeGreaterThan(5);
